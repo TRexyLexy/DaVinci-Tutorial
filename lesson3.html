@@ -2,60 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lesson 3: Order Management and Beyond</title>
+  <title>Lesson 3: Order Management (Receiving and Shipping)</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
   <div class="container">
-
     <p><a href="index.html">⬅️ Back to homepage</a></p>
-    <h1>Lesson 3: Order Management and Beyond</h1>
+    <h1>Lesson 3: Order Management (Receiving and Shipping)</h1>
 
-    <div class="step-counter" id="step-counter">Step 1 of 4</div>
+    <div class="step-counter" id="step-counter">Step 1 of 2</div>
 
     <div id="lesson-steps">
-
       <div class="step active">
-        <img src="Slide8.JPG" alt="Order Management Overview" />
-        <h2>Managing Orders</h2>
-        <p>Once your warehouse and accounts are set up, the next crucial step is managing orders. DaVinci WMS provides robust tools for creating, tracking, and processing both inbound (receipts) and outbound (shipments) orders.</p>
-        <p>To access order management features:</p>
-        <ol>
-          <li>Navigate to the <strong>Orders</strong> section from the main menu.</li>
-          <li>Select either <strong>Inbound Orders</strong> or <strong>Outbound Orders</strong> depending on your need.</li>
-          <li>Use the <strong>Insert</strong> button to create new orders or search existing ones.</li>
-        </ol>
-        <p>Each order will have a detailed view where you can add line items, specify quantities, and set various parameters like expected delivery dates or shipping methods.</p>
+        <h2>Receiving Inventory</h2>
+         <img src="Slide11.JPG" alt="Warehouse Setup Slide" />
+        <p>To create a receiving order, navigate to the dropdown menu (three lines) in the top left corner.<br>
+        Select <strong>"Orders"</strong> then <strong>"Receiving Orders"</strong>.</p>
+
+         <img src="Slide12.JPG" alt="Warehouse Setup Slide" />
+        <p>From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus), and then select <strong>"Create New Receipt"</strong>.</p>
+
+        <p>Fill out the necessary fields. A <strong>Transaction Number</strong> will be created after saving.</p>
+        <p>You can create new carriers or suppliers using the insert button next to the desired field.</p>
+
+        <p>To add items, click <strong>"Line Entries"</strong> on the left sidebar under <strong>"General"</strong>, then click the insert button. A pop-up menu will appear where you can input the item code and planned quantity.</p>
+
+        <p>To print a pre-receipt or receipt, upload the necessary documents. Click <strong>"Action"</strong> in the top right corner, then <strong>"Print"</strong> to see various printing options.</p>
       </div>
 
       <div class="step">
-        <img src="Slide9.JPG" alt="Order Details Screen" />
-        <h2>Picking, Packing, and Shipping</h2>
-        <p>After an outbound order is created, the system guides you through the fulfillment process. DaVinci WMS helps optimize picking routes, manage packing, and generate necessary shipping documentation.</p>
-        <ul>
-          <li><strong>Picking:</strong> The system can generate pick lists to guide warehouse staff to item locations efficiently.</li>
-          <li><strong>Packing:</strong> Confirm items are correctly packed, and update the system on carton contents.</li>
-          <li><strong>Shipping:</strong> Generate shipping labels, manifests, and track shipments directly within the WMS.</li>
-        </ul>
-        <p>This streamlined process helps minimize errors and ensures timely delivery.</p>
-      </div>
+        <h2>Shipping Orders</h2>
+         <img src="Slide17.JPG" alt="Warehouse Setup Slide" />
+        <p>The initial steps for shipping orders are similar to receiving orders.<br>
+        Instead of <strong>"Receiving Orders"</strong>, choose <strong>"Shipping Orders"</strong> from the dropdown menu.</p>
 
-      <div class="step">
-        <img src="Slide10.JPG" alt="Shipping Workflow" />
-        <h2>Billing and Reporting</h2>
-        <p>DaVinci WMS also includes features for billing and comprehensive reporting, allowing you to track performance and financial aspects of your operations.</p>
-        <ul>
-          <li><strong>Billing:</strong> Generate invoices based on storage, handling, and shipping activities.</li>
-          <li><strong>Reporting:</strong> Access a variety of reports on inventory levels, order fulfillment rates, occupancy, and more.</li>
-        </ul>
-        <p>These tools are vital for business analysis and making informed decisions about your warehouse operations.</p>
-      </div>
+        <p>The "create order" menu for shipping is very similar to that for receiving.<br>
+        Adding items to a shipping order is similar to receiving orders.</p>
 
-      <div class="step">
-        <p>Congratulations! You've now covered the essential functions to get started with DaVinci WMS. Continue exploring the system's features and refer back to these lessons as needed.</p>
-      </div>
+        <p>For <strong>"System Selected Locations"</strong>, enter the item code, unit price, ordered quantity, and shipped quantity. DaVinci will automatically calculate quantity and weight.</p>
 
+        <p>Adding line items as <strong>"Manual Selected Locations"</strong> allows you to search from existing item options.</p>
+
+        <p>After completing your shipping order, several printing options are available.</p>
+      </div>
     </div>
 
     <div class="step-nav">
@@ -65,37 +55,72 @@
 
     <nav class="nav-buttons">
       <a href="lesson2.html">⬅️ Previous Lesson</a>
-      <a href="index.html">🏠 Home</a>
+      <a href="lesson4.html">Next Lesson ➡️</a>
     </nav>
+<h2>📝 Lesson 3 Quiz</h2>
 
-    <h2>📝 Lesson 3 Quiz</h2>
+<!-- Question 1 -->
+<div class="quiz-question">
+  <p>1. Where do you go to create a receiving order?</p>
+  <button onclick="checkAnswer(this, 'correct')">Orders > Receiving Orders</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Dashboard > Reports</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Business Partners > Accounts</button>
+  <p class="feedback"></p>
+</div>
 
-    <!-- Question 1 -->
-    <div class="quiz-question">
-      <p>1. What button do you click to create a new receiving order?</p>
-      <button onclick="checkAnswer(this, 'correct')">Insert</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Edit</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Delete</button>
-      <p class="feedback"></p>
-    </div>
+<!-- Question 2 -->
+<div class="quiz-question">
+  <p>2. What button do you click to create a new receipt?</p>
+  <button onclick="checkAnswer(this, 'correct')">Insert (Green Plus)</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Edit</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Delete</button>
+  <p class="feedback"></p>
+</div>
 
-    <!-- Question 2 -->
-    <div class="quiz-question">
-      <p>2. What does the picking process optimize?</p>
-      <button onclick="checkAnswer(this, 'correct')">Picking routes for warehouse staff</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Shipping labels</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Billing invoices</button>
-      <p class="feedback"></p>
-    </div>
+<!-- Question 3 -->
+<div class="quiz-question">
+  <p>3. How do you add items to a receiving order?</p>
+  <button onclick="checkAnswer(this, 'correct')">Click Line Entries, then Insert</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Click Dashboard, then Add</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Select from the Billing tab</button>
+  <p class="feedback"></p>
+</div>
 
-    <!-- Question 3 -->
-    <div class="quiz-question">
-      <p>3. What can DaVinci WMS generate for billing?</p>
-      <button onclick="checkAnswer(this, 'correct')">Invoices based on storage, handling, and shipping</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Employee schedules</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Customer feedback</button>
-      <p class="feedback"></p>
-    </div>
+<!-- Question 4 -->
+<div class="quiz-question">
+  <p>4. What field does the system calculate automatically in shipping orders?</p>
+  <button onclick="checkAnswer(this, 'correct')">Quantity and Weight</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Supplier Name</button>
+  <button onclick="checkAnswer(this, 'incorrect')">Item Description</button>
+  <p class="feedback"></p>
+</div>
+
+<!-- Question 5 -->
+<div class="quiz-question">
+  <p>5. What is the difference between System Selected and Manual Selected Locations?</p>
+  <button onclick="checkAnswer(this, 'correct')">System = Auto-calculate; Manual = Choose location</button>
+  <button onclick="checkAnswer(this, 'incorrect')">System = Print-only; Manual = Invoice only</button>
+  <button onclick="checkAnswer(this, 'incorrect')">They are the same</button>
+  <p class="feedback"></p>
+</div>
+
+<script>
+  function checkAnswer(button, status) {
+    const container = button.closest(".quiz-question");
+    const feedback = container.querySelector(".feedback");
+    const buttons = container.querySelectorAll("button");
+
+    if (status === 'correct') {
+      feedback.textContent = "🎉 Yay! That’s correct!";
+      feedback.style.color = "#28a745";
+      buttons.forEach(btn => btn.disabled = true);
+    } else {
+      feedback.textContent = "😢 Oops! Try a different answer!";
+      feedback.style.color = "#d63384";
+      button.disabled = true;
+    }
+  }
+</script>
 
   </div>
 
@@ -113,11 +138,7 @@
       stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
 
       backBtn.disabled = (index === 0);
-      if(index === steps.length - 1) {
-        nextBtn.textContent = "Done ✅";
-      } else {
-        nextBtn.textContent = "Next ➡️";
-      }
+      nextBtn.textContent = (index === steps.length - 1) ? "Done ✅" : "Next ➡️";
     }
 
     function nextStep() {
@@ -135,22 +156,6 @@
     }
 
     showStep(currentStep);
-
-    function checkAnswer(button, status) {
-      const container = button.closest(".quiz-question");
-      const feedback = container.querySelector(".feedback");
-      const buttons = container.querySelectorAll("button");
-
-      if (status === "correct") {
-        feedback.textContent = "🎉 Yay! That’s correct!";
-        feedback.style.color = "#28a745";
-        buttons.forEach(btn => btn.disabled = true);
-      } else {
-        feedback.textContent = "😢 Oops! Try a different answer!";
-        feedback.style.color = "#d63384";
-        button.disabled = true;
-      }
-    }
   </script>
 </body>
 </html>
