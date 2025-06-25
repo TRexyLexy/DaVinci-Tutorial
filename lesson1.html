@@ -3,58 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <title>Lesson 1: Getting Started</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+<link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
   <div class="container">
+
     <p><a href="index.html">⬅️ Back to homepage</a></p>
-
     <h1>Lesson 1: Getting Started</h1>
-<img src="Slide2.JPG" alt="Dashboard Overview" width="700" />
 
+    <div class="step-counter" id="step-counter">Step 1 of 3</div>
 
-    <h2>Logging In</h2>
-    <p>To begin using DaVinci WMS:</p>
-    <ol>
-      <li>Open your web browser</li>
-      <li>Navigate to the provided DaVinci WMS URL</li>
-      <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
-    </ol>
-<img src="Slide3.JPG" alt="Dashboard Overview" width="700" />
+    <div id="lesson-steps">
 
+      <div class="step active">
+        <h2>Logging In</h2>
+        <p>To begin using DaVinci WMS:</p>
+        <ol>
+          <li>Open your web browser</li>
+          <li>Navigate to the provided DaVinci WMS URL</li>
+          <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
+        </ol>
+        <img src="Slide2.JPG" alt="Dashboard Overview" />
+      </div>
 
-    <h2>Exploring the Dashboard</h2>
-    <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics, such as:</p>
-    <ul>
-      <li><strong>Occupancy</strong></li>
-      <li><strong>Inventory</strong></li>
-      <li>Other performance indicators</li>
-    </ul>
-    <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
+      <div class="step">
+        <h2>Exploring the Dashboard</h2>
+        <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics, such as:</p>
+        <ul>
+          <li><strong>Occupancy</strong></li>
+          <li><strong>Inventory</strong></li>
+          <li>Other performance indicators</li>
+        </ul>
+        <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
+        <img src="Slide3.JPG" alt="Dashboard Overview" />
+      </div>
 
+      <div class="step">
+        <h2>The Navigation Menu</h2>
+        <p>In the top-left corner, you’ll see the <strong>three-line menu icon</strong> (also known as the “hamburger menu”). This dropdown is essential for moving around the system.</p>
+        <img src="Slide4.JPG" alt="Navigation Detail Slide" />
+        <p>From here, you can:</p>
+        <ul>
+          <li><strong>Create</strong> new orders</li>
+          <li><strong>Edit</strong> existing records</li>
+          <li><strong>View</strong> various system features</li>
+        </ul>
+        <p>Get familiar with this menu — you’ll use it constantly while working in DaVinci WMS.</p>
+      </div>
 
-    <h2>The Navigation Menu</h2>
-    <p>In the top-left corner, you’ll see the <strong>three-line menu icon</strong> (also known as the “hamburger menu”). This dropdown is essential for moving around the system.</p>
-    <img src="Slide4.JPG" alt="Navigation Detail Slide" width="700" />
+    </div>
 
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
+      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+    </div>
 
-    <p>From here, you can:</p>
-    <ul>
-      <li><strong>Create</strong> new orders</li>
-      <li><strong>Edit</strong> existing records</li>
-      <li><strong>View</strong> various system features</li>
-    </ul>
+    <nav class="nav-buttons">
+      <a href="index.html">🏠 Home</a>
+      <a href="lesson2.html">Next Lesson ➡️</a>
+    </nav>
 
-    <p>Get familiar with this menu — you’ll use it constantly while working in DaVinci WMS.</p>
+    <h2>📝 Lesson 1 Quiz</h2>
 
+    <!-- Question 1 -->
+    <div class="quiz-question">
+      <p>1. Where do you log in to DaVinci WMS?</p>
+      <button onclick="checkAnswer(this, 'correct')">The provided web URL</button>
+      <button onclick="checkAnswer(this, 'incorrect')">The app store</button>
+      <button onclick="checkAnswer(this, 'incorrect')">On paper forms</button>
+      <p class="feedback"></p>
+    </div>
 
-<nav>
-  <a href="index.html">🏠 Home</a>
-  <a href="lesson2.html">📗 Lesson 2</a>
-  <a href="lesson3.html">📕 Lesson 3</a>
-</nav>
+    <!-- Question 2 -->
+    <div class="quiz-question">
+      <p>2. What does the dashboard show?</p>
+      <button onclick="checkAnswer(this, 'correct')">Key metrics like occupancy and inventory</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Your email inbox</button>
+      <button onclick="checkAnswer(this, 'incorrect')">A calendar</button>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-question">
+      <p>3. What is the purpose of the three-line menu?</p>
+      <button onclick="checkAnswer(this, 'correct')">To access orders and features</button>
+      <button onclick="checkAnswer(this, 'incorrect')">To refresh the page</button>
+      <button onclick="checkAnswer(this, 'incorrect')">To change your password</button>
+      <p class="feedback"></p>
+    </div>
 
   </div>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+
+      // Disable back button on first step
+      backBtn.disabled = (index === 0);
+      // Change next button text on last step
+      if(index === steps.length - 1) {
+        nextBtn.textContent = "Done ✅";
+      } else {
+        nextBtn.textContent = "Next ➡️";
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    showStep(currentStep);
+
+    function checkAnswer(button, status) {
+      const container = button.closest(".quiz-question");
+      const feedback = container.querySelector(".feedback");
+      const buttons = container.querySelectorAll("button");
+
+      if (status === "correct") {
+        feedback.textContent = "🎉 Yay! That’s correct!";
+        feedback.style.color = "#28a745";
+        buttons.forEach(btn => btn.disabled = true);
+      } else {
+        feedback.textContent = "😢 Oops! Try a different answer!";
+        feedback.style.color = "#d63384";
+        button.disabled = true;
+      }
+    }
+  </script>
 </body>
 </html>

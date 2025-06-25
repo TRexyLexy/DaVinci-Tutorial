@@ -1,55 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Lesson 3: Order Management and Beyond</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+  <meta charset="UTF-8" />
+  <title>Lesson 3: Order Management and Beyond</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
-    <div class="container">
-        <p><a href="index.html">⬅️ Back to homepage</a></p>
+  <div class="container">
 
-        <h1>Lesson 3: Order Management and Beyond</h1>
-        <img src="Slide8.JPG" alt="Order Management Overview" width="700" />
+    <p><a href="index.html">⬅️ Back to homepage</a></p>
+    <h1>Lesson 3: Order Management and Beyond</h1>
 
+    <div class="step-counter" id="step-counter">Step 1 of 4</div>
+
+    <div id="lesson-steps">
+
+      <div class="step active">
+        <img src="Slide8.JPG" alt="Order Management Overview" />
         <h2>Managing Orders</h2>
         <p>Once your warehouse and accounts are set up, the next crucial step is managing orders. DaVinci WMS provides robust tools for creating, tracking, and processing both inbound (receipts) and outbound (shipments) orders.</p>
         <p>To access order management features:</p>
         <ol>
-            <li>Navigate to the <strong>Orders</strong> section from the main menu.</li>
-            <li>Select either <strong>Inbound Orders</strong> or <strong>Outbound Orders</strong> depending on your need.</li>
-            <li>Use the <strong>Insert</strong> button to create new orders or search existing ones.</li>
+          <li>Navigate to the <strong>Orders</strong> section from the main menu.</li>
+          <li>Select either <strong>Inbound Orders</strong> or <strong>Outbound Orders</strong> depending on your need.</li>
+          <li>Use the <strong>Insert</strong> button to create new orders or search existing ones.</li>
         </ol>
         <p>Each order will have a detailed view where you can add line items, specify quantities, and set various parameters like expected delivery dates or shipping methods.</p>
+      </div>
 
-        <img src="Slide9.JPG" alt="Order Details Screen" width="700" />
-
+      <div class="step">
+        <img src="Slide9.JPG" alt="Order Details Screen" />
         <h2>Picking, Packing, and Shipping</h2>
         <p>After an outbound order is created, the system guides you through the fulfillment process. DaVinci WMS helps optimize picking routes, manage packing, and generate necessary shipping documentation.</p>
         <ul>
-            <li><strong>Picking:</strong> The system can generate pick lists to guide warehouse staff to item locations efficiently.</li>
-            <li><strong>Packing:</strong> Confirm items are correctly packed, and update the system on carton contents.</li>
-            <li><strong>Shipping:</strong> Generate shipping labels, manifests, and track shipments directly within the WMS.</li>
+          <li><strong>Picking:</strong> The system can generate pick lists to guide warehouse staff to item locations efficiently.</li>
+          <li><strong>Packing:</strong> Confirm items are correctly packed, and update the system on carton contents.</li>
+          <li><strong>Shipping:</strong> Generate shipping labels, manifests, and track shipments directly within the WMS.</li>
         </ul>
         <p>This streamlined process helps minimize errors and ensures timely delivery.</p>
+      </div>
 
-        <img src="Slide10.JPG" alt="Shipping Workflow" width="700" />
-
+      <div class="step">
+        <img src="Slide10.JPG" alt="Shipping Workflow" />
         <h2>Billing and Reporting</h2>
         <p>DaVinci WMS also includes features for billing and comprehensive reporting, allowing you to track performance and financial aspects of your operations.</p>
         <ul>
-            <li><strong>Billing:</strong> Generate invoices based on storage, handling, and shipping activities.</li>
-            <li><strong>Reporting:</strong> Access a variety of reports on inventory levels, order fulfillment rates, occupancy, and more.</li>
+          <li><strong>Billing:</strong> Generate invoices based on storage, handling, and shipping activities.</li>
+          <li><strong>Reporting:</strong> Access a variety of reports on inventory levels, order fulfillment rates, occupancy, and more.</li>
         </ul>
         <p>These tools are vital for business analysis and making informed decisions about your warehouse operations.</p>
-        <p>Congratulations! You've now covered the essential functions to get started with DaVinci WMS. Continue exploring the system's features and refer back to these lessons as needed.</p>
+      </div>
 
-        <nav>
-            <a href="index.html">🏠 Home</a>
-            <a href="lesson1.html">📘 Lesson 1</a>
-            <a href="lesson2.html">📗 Lesson 2</a>
-        </nav>
+      <div class="step">
+        <p>Congratulations! You've now covered the essential functions to get started with DaVinci WMS. Continue exploring the system's features and refer back to these lessons as needed.</p>
+      </div>
+
     </div>
+
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
+      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson2.html">⬅️ Previous Lesson</a>
+      <a href="index.html">🏠 Home</a>
+    </nav>
+
+    <h2>📝 Lesson 3 Quiz</h2>
+
+    <!-- Question 1 -->
+    <div class="quiz-question">
+      <p>1. What button do you click to create a new receiving order?</p>
+      <button onclick="checkAnswer(this, 'correct')">Insert</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Edit</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Delete</button>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-question">
+      <p>2. What does the picking process optimize?</p>
+      <button onclick="checkAnswer(this, 'correct')">Picking routes for warehouse staff</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Shipping labels</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Billing invoices</button>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-question">
+      <p>3. What can DaVinci WMS generate for billing?</p>
+      <button onclick="checkAnswer(this, 'correct')">Invoices based on storage, handling, and shipping</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Employee schedules</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Customer feedback</button>
+      <p class="feedback"></p>
+    </div>
+
+  </div>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+
+      backBtn.disabled = (index === 0);
+      if(index === steps.length - 1) {
+        nextBtn.textContent = "Done ✅";
+      } else {
+        nextBtn.textContent = "Next ➡️";
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    showStep(currentStep);
+
+    function checkAnswer(button, status) {
+      const container = button.closest(".quiz-question");
+      const feedback = container.querySelector(".feedback");
+      const buttons = container.querySelectorAll("button");
+
+      if (status === "correct") {
+        feedback.textContent = "🎉 Yay! That’s correct!";
+        feedback.style.color = "#28a745";
+        buttons.forEach(btn => btn.disabled = true);
+      } else {
+        feedback.textContent = "😢 Oops! Try a different answer!";
+        feedback.style.color = "#d63384";
+        button.disabled = true;
+      }
+    }
+  </script>
 </body>
 </html>

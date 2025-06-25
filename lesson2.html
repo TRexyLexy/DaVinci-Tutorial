@@ -1,57 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="style.css" />
   <meta charset="UTF-8" />
   <title>Lesson 2: Setup and Importing Data</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
   <div class="container">
-    <p><a href="index.html">⬅️ Back to homepage</a></p>
 
+    <p><a href="index.html">⬅️ Back to homepage</a></p>
     <h1>Lesson 2: Setup and Importing Data</h1>
 
-    <p>Setting up a warehouse in DaVinci WMS starts by navigating to the <strong>"Warehouse Terminal"</strong> and clicking the green <strong>Insert</strong> button. When creating a new warehouse, the only mandatory fields are:</p>
-    <ul>
-      <li><strong>Description</strong></li>
-      <li><strong>Mode</strong></li>
-      <li><strong>Bounded/Unbounded</strong></li>
-    </ul>
-    <p>You can also fill in additional fields to provide more detailed information. Remember to click <strong>Save</strong> after entering the data. You can return at any time to edit the warehouse details.</p>
+    <div class="step-counter" id="step-counter">Step 1 of 3</div>
 
-    <img src="Slide5.JPG" alt="Warehouse Setup Slide" width="700" />
+    <div id="lesson-steps">
 
-    <h2>Creating Accounts</h2>
-    <p>An <strong>"account"</strong> in DaVinci WMS refers to a client, customer, or any business entity you’ll be managing. To create a new account:</p>
-    <ol>
-      <li>Go to <strong>Business Partners</strong></li>
-      <li>Select <strong>Accounts</strong></li>
-      <li>Click the green <strong>Insert</strong> button</li>
-    </ol>
-    <p>This opens a form where you can input the account’s information.</p>
+      <div class="step active">
+        <h2>Warehouse Setup</h2>
+        <p>Setting up a warehouse in DaVinci WMS starts by navigating to the <strong>"Warehouse Terminal"</strong> and clicking the green <strong>Insert</strong> button. When creating a new warehouse, the only mandatory fields are:</p>
+        <ul>
+          <li><strong>Description</strong></li>
+          <li><strong>Mode</strong></li>
+          <li><strong>Bounded/Unbounded</strong></li>
+        </ul>
+        <p>You can also fill in additional fields to provide more detailed information. Remember to click <strong>Save</strong> after entering the data. You can return at any time to edit the warehouse details.</p>
+        <img src="Slide5.JPG" alt="Warehouse Setup Slide" />
+      </div>
 
-    <img src="Slide6.JPG" alt="Accounts Slide" width="700" />
+      <div class="step">
+        <h2>Creating Accounts</h2>
+        <p>An <strong>"account"</strong> in DaVinci WMS refers to a client, customer, or any business entity you’ll be managing. To create a new account:</p>
+        <ol>
+          <li>Go to <strong>Business Partners</strong></li>
+          <li>Select <strong>Accounts</strong></li>
+          <li>Click the green <strong>Insert</strong> button</li>
+        </ol>
+        <p>This opens a form where you can input the account’s information.</p>
+        <img src="Slide6.JPG" alt="Accounts Slide" />
+      </div>
 
-    <h2>Importing Data</h2>
-    <p>DaVinci WMS supports importing various types of data — including products, inventory, and orders — to streamline operations. To import data:</p>
-    <ol>
-      <li>Go to the <strong>Import</strong> screen</li>
-      <li>Select the data type from the <strong>Import Type</strong> dropdown</li>
-      <li>Choose your import file</li>
-      <li>Use the <strong>Download Template</strong> option to view a sample format</li>
-      <li>Click the blue <strong>Import</strong> button</li>
-    </ol>
-    <p><strong>⚠️ Important:</strong> Never import data into a live system without thorough testing.</p>
+      <div class="step">
+        <h2>Importing Data</h2>
+        <p>DaVinci WMS supports importing various types of data — including products, inventory, and orders — to streamline operations. To import data:</p>
+        <ol>
+          <li>Go to the <strong>Import</strong> screen</li>
+          <li>Select the data type from the <strong>Import Type</strong> dropdown</li>
+          <li>Choose your import file</li>
+          <li>Use the <strong>Download Template</strong> option to view a sample format</li>
+          <li>Click the blue <strong>Import</strong> button</li>
+        </ol>
+        <p><strong>⚠️ Important:</strong> Never import data into a live system without thorough testing.</p>
+        <img src="Slide7.JPG" alt="Importing Data Slide" />
+      </div>
 
-    <img src="Slide7.JPG" alt="Importing Data Slide" width="700" />
+    </div>
 
-<nav>
-  <a href="index.html">🏠 Home</a>
-  <a href="lesson1.html">📘 Lesson 1</a>
-  <a href="lesson3.html">📕 Lesson 3</a>
-</nav>
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
+      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson1.html">⬅️ Previous</a>
+      <a href="index.html">🏠 Home</a>
+      <a href="lesson3.html">Next Lesson ➡️</a>
+    </nav>
+
+    <h2>📝 Lesson 2 Quiz</h2>
+
+    <!-- Question 1 -->
+    <div class="quiz-question">
+      <p>1. Which fields are mandatory when creating a new warehouse?</p>
+      <button onclick="checkAnswer(this, 'correct')">Description, Mode, Bounded/Unbounded</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Name and Address</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Phone Number and Email</button>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-question">
+      <p>2. Where do you go to create a new account in DaVinci WMS?</p>
+      <button onclick="checkAnswer(this, 'correct')">Business Partners > Accounts > Insert</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Inventory > New Account</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Orders > New Account</button>
+      <p class="feedback"></p>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-question">
+      <p>3. What should you do before importing data into a live system?</p>
+      <button onclick="checkAnswer(this, 'correct')">Test thoroughly first</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Import immediately</button>
+      <button onclick="checkAnswer(this, 'incorrect')">Ignore templates</button>
+      <p class="feedback"></p>
+    </div>
 
   </div>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+
+      backBtn.disabled = (index === 0);
+      if(index === steps.length - 1) {
+        nextBtn.textContent = "Done ✅";
+      } else {
+        nextBtn.textContent = "Next ➡️";
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    showStep(currentStep);
+
+    function checkAnswer(button, status) {
+      const container = button.closest(".quiz-question");
+      const feedback = container.querySelector(".feedback");
+      const buttons = container.querySelectorAll("button");
+
+      if (status === "correct") {
+        feedback.textContent = "🎉 Yay! That’s correct!";
+        feedback.style.color = "#28a745";
+        buttons.forEach(btn => btn.disabled = true);
+      } else {
+        feedback.textContent = "😢 Oops! Try a different answer!";
+        feedback.style.color = "#d63384";
+        button.disabled = true;
+      }
+    }
+  </script>
 </body>
 </html>
