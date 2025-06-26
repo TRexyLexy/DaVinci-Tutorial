@@ -1,112 +1,195 @@
-/* style.css */
 
 body {
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
-  background: #ffffff;
-  color: #a8005b;
+  background: #fff;
+  color: #000;
   max-width: 1200px;
-  margin: 0px auto;
-  padding: 60px;
-  border: 5px solid #ffa6c9;
-  border-radius: 15px;
+  margin: 0 auto;
+  font-weight: 400; 
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Full-width Banner */
+.site-banner {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-bottom: 5px solid #ba0000;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.banner-inner {
+  max-width: 1200px;  
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo and text inside banner */
+.banner-logo {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.banner-text h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #ba0000;
+}
+
+.banner-text p {
+  margin: 0;
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* Larger styles for full screen */
+@media (min-width: 1400px) {
+  .banner-text h1 {
+    font-size: 50px;
+   position: relative;
+   left: 70%;
+   right: 50%;
+   margin-top: -10vw;
+   margin-left: -50vw;
+   margin-right: -50vw;
+   padding: 1.5rem 2rem;
+
+  }
+
+  .banner-text p {
+   font-size: 35px;
+   position: relative;
+   left: 80%;
+   right: 50%;
+   margin-top: -3vw;
+   margin-left: -50vw;
+   margin-right: -20vw;
+   padding: 1.5rem 2rem;
+  }
+
+  .banner-logo {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  position: relative;
+   left: 50%;
+   right: 50%;
+   transform: translateY(1px);
+   margin-left: -50vw;
+   margin-right: -50vw;
+   padding: 1.5rem 2rem;
+
+  }
+}
+
+/* Headings */
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
 }
-body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400; 
-  font-size: 20px;
-}
 
+/* Step Navigation */
 .step {
   display: none;
 }
-
 .step.active {
   display: block;
 }
-
 .step-nav {
   margin-top: 20px;
   text-align: center;
 }
-
 .step-nav button {
-  background-color: #ffcce6;
-  color: #a8005b;
-  border: 2px solid #ffa6c9;
-  border-radius: 10px;
+  background-color: #ba0000;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 15px;
   padding: 10px 20px;
   margin: 10px;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: bold; 
   transition: background-color 0.3s ease;
 }
-
 .step-nav button:hover {
-  background-color: #ffb3da;
+  background-color: #000;
+  color: #fff;
 }
 
-nav.nav-buttons a {
-  background-color: #ffcce6;
-  color: #a8005b;
-  padding: 10px 15px;
-  margin: 10px;
-  border-radius: 12px;
-  text-decoration: none;
-  border: 2px solid #ffa6c9;
-  font-weight: bold;
-}
-
+/* Navigation Buttons */
 nav.nav-buttons {
   text-align: center;
   margin-top: 40px;
 }
-
+nav.nav-buttons a {
+  background-color: #ba0000;
+  color: #000;
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 15px;
+  text-decoration: none;
+  border: 2px solid #000;
+  font-weight: bold;
+}
 nav.nav-buttons a:hover {
   background-color: #ffb3da;
+  color: #000;
 }
 
+/* Step Counter */
 .step-counter {
   text-align: center;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
+/* Images */
 img { 
-  max-width: 700px;  /* Your preferred default size */
-  width: 100%;       /* Make it responsive */
+  max-width: 700px;
+  width: 100%;
   border-radius: 12px;
   margin-top: 10px;
 }
 
-/* When the screen is wider than 1200px (fullscreen-ish) */
 @media (min-width: 1200px) {
-img {
-  display: block;
-  margin: 40px auto;
-  max-width: 70%;
-  height: auto;
-  border-radius: 12px;
+  img {
+    display: block;
+    margin: 40px auto;
+    max-width: 70%;
+    height: auto;
+    border-radius: 12px;
   }
 }
+
+/* Quiz Styles */
 .quiz-question {
   background: #ffd9ec;
   padding: 15px;
   border-radius: 12px;
   margin-top: 30px;
 }
-
 .quiz-question p {
   font-weight: bold;
 }
-
 .quiz-question button {
   background-color: #ffa6c9;
   border: none;
@@ -118,16 +201,13 @@ img {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .quiz-question button:hover:not(:disabled) {
   background-color: #e685b0;
 }
-
 .quiz-question button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .feedback {
   margin-top: 8px;
   font-weight: bold;
