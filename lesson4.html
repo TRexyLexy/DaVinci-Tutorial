@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lesson 4: Billing</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+  <div class="container">
+    <p><a href="index.html">⬅️ Back to homepage</a></p>
+    <h1>Lesson 4: Billing</h1>
+
+    <div class="step-counter" id="step-counter">Step 1 of 5</div>
+
+    <div id="lesson-steps">
+      <div class="step active">
+        <img src="Slide22.JPG" alt="Dashboard Overview" />
+
+        <h2>Viewing Accounts for Billing</h2>
+        <p>To view accounts for billing, navigate to the dashboard and the dropdown menu.</p>
+        <p>Select <strong>Business Partners</strong>, then <strong>Accounts</strong>.</p>
+        <img src="Slide23.JPG" alt="Dashboard Overview" />
+      </div>
+
+      <div class="step">
+        <h2>Charge Codes</h2>
+        <p>Select an account and click <strong>Charge Codes</strong> on the left sidebar.</p>
+        <p>To create a new charge code, press the green insert button.</p>
+        <p>The charge code menu offers many different type options to choose from.</p>
+        <img src="Slide24.JPG" alt="Dashboard Overview" />
+      </div>
+
+      <div class="step">
+        <h2>Assigning Charges (3-Step Process)</h2>
+        <ol>
+          <li>Open an Order.</li>
+          <li>Enter <strong>Manual Charge Codes</strong> using the input fields for values (default is zero).</li>
+          <li>Verify <strong>Automatic Charge Codes</strong>, which are system-applied and appear on the right side.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Storage Charges & Default Billing</h2>
+        <p>There are numerous type options for storage charges depending on business rules.</p>
+        <p>Default billing provides a simple way to set up billing for accessorial and storage for all units of measure.</p>
+      </div>
+
+      <div class="step">
+        <h2>Monthly Billing & General Billing Settings</h2>
+        <p>Monthly billing allows specific recurring fees to be applied each month in addition to storage fees.</p>
+        <p>The <strong>Billing</strong> section also includes invoice configuration and modes for renewal storage billing.</p>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
+      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson3.html">⬅️ Previous Lesson</a>
+      <!-- Add lesson5.html here when it’s ready -->
+      <a href="index.html">🏠 Home</a>
+    </nav>
+  </div>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+      backBtn.disabled = (index === 0);
+      nextBtn.textContent = (index === steps.length - 1) ? "Done ✅" : "Next ➡️";
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        window.location.href = "index.html";
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
+    showStep(currentStep);
+  </script>
+</body>
+</html>
