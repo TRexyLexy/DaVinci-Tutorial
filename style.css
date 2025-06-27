@@ -120,7 +120,7 @@ h1, h2, h3 {
 }
 .step-nav button {
   background-color: #ba0000;
-  color: #000;
+  color: #fff;
   border: 2px solid #000;
   border-radius: 15px;
   padding: 10px 20px;
@@ -131,7 +131,7 @@ h1, h2, h3 {
   transition: background-color 0.3s ease;
 }
 .step-nav button:hover {
-  background-color: #000;
+  background-color: #fff;
   color: #fff;
 }
 
@@ -142,16 +142,16 @@ nav.nav-buttons {
 }
 nav.nav-buttons a {
   background-color: #ba0000;
-  color: #000;
+  color: #fff;
   padding: 10px 15px;
   margin: 10px;
   border-radius: 15px;
   text-decoration: none;
-  border: 2px solid #000;
+  border: 2px solid #fff;
   font-weight: bold;
 }
 nav.nav-buttons a:hover {
-  background-color: #ffb3da;
+  background-color: #ba0000;
   color: #000;
 }
 
@@ -182,7 +182,7 @@ img {
 
 /* Quiz Styles */
 .quiz-question {
-  background: #ffd9ec;
+  background: #D3D3D3;
   padding: 15px;
   border-radius: 12px;
   margin-top: 30px;
@@ -191,12 +191,12 @@ img {
   font-weight: bold;
 }
 .quiz-question button {
-  background-color: #ffa6c9;
+  background-color: #ba0000;
   border: none;
   padding: 8px 15px;
   margin: 6px 8px 6px 0;
   border-radius: 8px;
-  color: #a8005b;
+  color: #fff;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
