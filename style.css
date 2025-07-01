@@ -131,8 +131,7 @@ h1, h2, h3 {
   transition: background-color 0.3s ease;
 }
 .step-nav button:hover {
-  background-color: #fff;
-  color: #fff;
+  background-color: #ff3c3c;
 }
 
 /* Navigation Buttons */
@@ -151,8 +150,7 @@ nav.nav-buttons a {
   font-weight: bold;
 }
 nav.nav-buttons a:hover {
-  background-color: #ba0000;
-  color: #000;
+  background-color: #ff3c3c;
 }
 
 /* Step Counter */
@@ -165,6 +163,7 @@ nav.nav-buttons a:hover {
 /* Images */
 img { 
   max-width: 700px;
+  margin: 10px 0:
   width: 100%;
   border-radius: 12px;
   margin-top: 10px;
@@ -202,7 +201,7 @@ img {
   transition: background-color 0.3s ease;
 }
 .quiz-question button:hover:not(:disabled) {
-  background-color: #e685b0;
+  background-color: #ff3c3c;
 }
 .quiz-question button:disabled {
   opacity: 0.5;
@@ -211,4 +210,55 @@ img {
 .feedback {
   margin-top: 8px;
   font-weight: bold;
+}
+.top-nav {
+  background: linear-gradient(to bottom, #ff3c3c, #000);
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-bottom: 5px solid #fff;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.top-nav a:hover {
+  background-color: #ff3c3c;
+
+}
+.color-block {
+  width: 700px;       
+  height: 250px;      
+  background: linear-gradient(to bottom, #ff3c3c, #000);
+  border-radius: 4px; 
+  display: inline-block; 
+  margin-left: 59px;   
+  margin-bottom: -600px;  
+  vertical-align: middle;  
+
+}
+#main-img {
+  width: 350px;     
+  height: auto; 
+  position: relative;      
+  top: 50px;
+  left: 10px;
+}
+@media (min-width: 1200px) {
+  #main-img {
+   width: 350px;
+   height: auto;
+   position: relative; 
+   top: 50px;
+   left: -500px;
+  }
+}
 }
