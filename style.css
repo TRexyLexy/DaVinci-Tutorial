@@ -64,7 +64,7 @@ body {
 /* Larger styles for full screen */
 @media (min-width: 1400px) {
   .banner-text h1 {
-    font-size: 50px;
+   font-size: 50px;
    position: relative;
    left: 70%;
    right: 50%;
@@ -80,9 +80,9 @@ body {
    position: relative;
    left: 80%;
    right: 50%;
-   margin-top: -3vw;
-   margin-left: -50vw;
-   margin-right: -20vw;
+   margin-top: -3px;
+   margin-left: -50px;
+   margin-right: -20px;
    padding: 1.5rem 2rem;
   }
 
