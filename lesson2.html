@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  if (localStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
 <head>
 <link rel="stylesheet" href="style.css" />
   <meta charset="UTF-8" />

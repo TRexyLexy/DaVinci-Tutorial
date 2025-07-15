@@ -5,14 +5,44 @@
   <title>Getting Started with DaVinci</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <script>
+    // Redirect to login if not authenticated
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+  <style>
+    .site-banner {
+      position: relative;
+      padding-bottom: 10px;
+    }
+    #welcome-message {
+      text-align: center;
+      margin: 10px 0 30px 0;
+      font-size: 1.5em;
+      color: #333;
+    }
+    #logout-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      background-color: #005da3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 999;
+    }
+    #logout-btn:hover {
+      background-color: #003e70;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Full-width banner outside container -->
   <header class="site-banner">
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
-    <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
-
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
     <div class="banner-text">
       <h1>BRW WMS Training Portal</h1>
@@ -24,14 +54,42 @@
     </nav>
   </header>
 
-<div class="color-block"></div>
-  <div class="container">
+  <h2 id="welcome-message"></h2>
 
-    <p>The DaVinci Warehouse Management System (WMS) is a comprehensive tool designed to manage various aspects of warehouse operations. <br>
-This guide will walk you through the essential functions of the WMS, from initial login to managing orders and billing.
-<br><br><strong>Select "Lessons" at the top to get started.</strong></p>
-  <img src="Slide1.PNG" alt="main" id="main-img" />
+  <button id="logout-btn" onclick="logout()">Log Out</button>
+
+  <div class="color-block"></div>
+  <div class="container">
+    <p>
+      The DaVinci Warehouse Management System (WMS) is a comprehensive tool designed to manage various aspects of warehouse operations.<br />
+      This guide will walk you through the essential functions of the WMS, from initial login to managing orders and billing.
+      <br /><br /><strong>Select "Lessons" at the top to get started.</strong>
+    </p>
+    <img src="Slide1.PNG" alt="main" id="main-img" />
   </div>
 
+  <script>
+    // Fill welcome message with user's name
+    const name = sessionStorage.getItem("userName");
+    if (name) {
+      document.getElementById("welcome-message").textContent = `Welcome, ${name}!`;
+    }
+
+    // Logout function
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    }
+
+    // Show or hide logout button after page loads
+    window.onload = function () {
+      const logoutBtn = document.getElementById("logout-btn");
+      if (sessionStorage.getItem("authenticated") !== "true") {
+        logoutBtn.style.display = "none";
+      } else {
+        logoutBtn.style.display = "block";
+      }
+    };
+  </script>
 </body>
 </html>

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  if (localStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
 <head>
   <meta charset="UTF-8" />
   <title>Lesson 1: Getting Started</title>
@@ -9,11 +15,11 @@
 <body>
   <div class="container">
 
-    <p><a href="index.html">⬅️ Back to homepage</a></p>
+    <p><a href="index.html">Back to homepage</a></p>
     <h1>Lesson 1: Getting Started</h1>
 <img src="Slide2.PNG" alt="Title Slide" width="700" />
 
-    <div class="step-counter" id="step-counter">1 of 3</div>
+    <div class="step-counter" id="step-counter"> part 1 of 3</div>
 
     <div id="lesson-steps">
 
@@ -38,7 +44,7 @@
           <li>Other performance indicators</li>
         </ul>
         <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
-        <img src="Slide3.PNG" alt="Dashboard Overview" />
+        <img src="Slide4.PNG" alt="Dashboard Overview" />
       </div>
 
       <div class="step">
@@ -66,36 +72,7 @@
       <a href="lesson2.html">Next Lesson ➡️</a>
     </nav>
 
-    <h2>📝 Lesson 1 Quiz</h2>
-
-    <!-- Question 1 -->
-    <div class="quiz-question">
-      <p>1. Where do you log in to DaVinci WMS?</p>
-      <button onclick="checkAnswer(this, 'correct')">The provided web URL</button>
-      <button onclick="checkAnswer(this, 'incorrect')">The app store</button>
-      <button onclick="checkAnswer(this, 'incorrect')">On paper forms</button>
-      <p class="feedback"></p>
-    </div>
-
-    <!-- Question 2 -->
-    <div class="quiz-question">
-      <p>2. What does the dashboard show?</p>
-      <button onclick="checkAnswer(this, 'incorrect')">Your email inbox</button>
-      <button onclick="checkAnswer(this, 'incorrect')">A calendar</button>
-      <button onclick="checkAnswer(this, 'correct')">Key metrics like occupancy and inventory</button>
-      <p class="feedback"></p>
-    </div>
-
-    <!-- Question 3 -->
-    <div class="quiz-question">
-      <p>3. What is the purpose of the three-line menu?</p>
-      <button onclick="checkAnswer(this, 'incorrect')">To refresh the page</button>
-      <button onclick="checkAnswer(this, 'correct')">To access orders and features</button>
-      <button onclick="checkAnswer(this, 'incorrect')">To change your password</button>
-      <p class="feedback"></p>
-    </div>
-
-  </div>
+     </div>
 
   <script>
     let currentStep = 0;
@@ -134,23 +111,6 @@
       }
     }
 
-    showStep(currentStep);
-
-    function checkAnswer(button, status) {
-      const container = button.closest(".quiz-question");
-      const feedback = container.querySelector(".feedback");
-      const buttons = container.querySelectorAll("button");
-
-      if (status === "correct") {
-        feedback.textContent = "🎉 Yay! That’s correct!";
-        feedback.style.color = "#28a745";
-        buttons.forEach(btn => btn.disabled = true);
-      } else {
-        feedback.textContent = "😢 Oops! Try a different answer!";
-        feedback.style.color = "#d63384";
-        button.disabled = true;
-      }
-    }
   </script>
 </body>
 </html>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  if (localStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
 <head>
   <meta charset="UTF-8" />
   <title>DaVinci Tutorial – Lesson Index</title>
@@ -29,7 +34,7 @@
     <h1>BRW WMS Guided Lessons</h1>
     <ul class="lesson-list">
       <li><a href="lesson1.html">Lesson 1: Getting Started</a></li>
-      <li><a href="lesson2.html">Lesson 2: Admin Setup</a></li>
+      <li><a href="lesson2.html">Lesson 2: Setup</a></li>
       <li><a href="lesson3.html">Lesson 3: Order Management</a></li>
       <li><a href="lesson4.html">Lesson 4: Billing</a></li>
     </ul>

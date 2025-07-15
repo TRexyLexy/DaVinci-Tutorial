@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  if (localStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
 <head>
   <meta charset="UTF-8" />
   <title>Lesson 3: Order Management (Receiving and Shipping)</title>

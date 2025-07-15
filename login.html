@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - DaVinci Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #error-message {
+      color: #fff;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>DaVinci WMS Login</h2>
+
+    <form onsubmit="handleLogin(event)">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="password" id="password" placeholder="Enter the password" required />
+      <button type="submit">Log In</button>
+      <p id="error-message"></p>
+    </form>
+  </div>
+
+  <script>
+    const allowedEmails = [
+      "alexiya.wright@brwnow.com",
+      "derrick.vanover@brwnow.com",
+      "jane.smith@brwilliams.com"
+    ];
+
+    const userDirectory = {
+      "alexiya.wright@brwnow.com": "Alexiya Wright",
+      "derrick.vanover@brwnow.com": "Derrick Vanover",
+      "jane.smith@brwilliams.com": "Jane Smith"
+    };
+
+    const universalPassword = "brwilliams2025";
+
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim().toLowerCase().replace(/\u200B/g, "");
+      const password = document.getElementById("password").value.trim();
+      const errorMessage = document.getElementById("error-message");
+
+      if (!allowedEmails.includes(email)) {
+        errorMessage.textContent = "Access denied. Email not recognized.";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      if (password !== universalPassword) {
+        errorMessage.textContent = "Incorrect password.";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      const name = userDirectory[email] || "User";
+
+      // Login successful — use sessionStorage for session-only login
+      sessionStorage.setItem("authenticated", "true");
+      sessionStorage.setItem("userName", name);
+      sessionStorage.setItem("userEmail", email);
+
+      window.location.href = "index.html";
+    }
+
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

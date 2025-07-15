@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+  if (localStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>DaVinci WMS Quiz</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    .quiz-container {
+      background: #fff;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 4px 0;
+    }
+    input[type="email"], input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .submit-btn {
+      padding: 10px 20px;
+      background-color: #005da3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #003e70;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h2>DaVinci WMS Quiz</h2>
+  <form id="quiz-form" onsubmit="submitQuiz(event)">
+    
+    <div class="question">
+      <h4>1. What does WMS stand for?</h4>
+      <label><input type="radio" name="q1" value="a" required> Warehouse Management System</label>
+      <label><input type="radio" name="q1" value="b"> Wireless Mapping Software</label>
+      <label><input type="radio" name="q1" value="c"> Warehouse Mobility Suite</label>
+    </div>
+
+    <div class="question">
+      <h4>2. What is a receiving order used for?</h4>
+      <label><input type="radio" name="q2" value="a" required> To ship items to customers</label>
+      <label><input type="radio" name="q2" value="b"> To receive items into the warehouse</label>
+      <label><input type="radio" name="q2" value="c"> To pay invoices</label>
+    </div>
+
+    <div class="question">
+      <h4>3. What tab allows you to assign charges?</h4>
+      <label><input type="radio" name="q3" value="a" required> Billing Tab</label>
+      <label><input type="radio" name="q3" value="b"> Notes Tab</label>
+      <label><input type="radio" name="q3" value="c"> Details Tab</label>
+    </div>
+
+    <label for="userEmail"><strong>Your Email:</strong></label>
+    <input type="email" id="userEmail" name="userEmail" placeholder="e.g. john@company.com" required>
+
+    <label for="supervisorEmail"><strong>Supervisor's Email:</strong></label>
+    <input type="email" id="supervisorEmail" name="supervisorEmail" placeholder="e.g. supervisor@company.com" required>
+
+    <br><br>
+    <button class="submit-btn" type="submit">Submit Quiz</button>
+  </form>
+</div>
+
+<script>
+  (function() {
+    emailjs.init("BTA8oZMFXMkqnB74u"); 
+  })();
+
+  const correctAnswers = {
+    q1: "a",
+    q2: "b",
+    q3: "a"
+  };
+
+  const questionsText = {
+    q1: "What does WMS stand for?",
+    q2: "What is a receiving order used for?",
+    q3: "What tab allows you to assign charges?"
+  };
+
+  const answerChoicesText = {
+    q1: {
+      a: "Warehouse Management System",
+      b: "Wireless Mapping Software",
+      c: "Warehouse Mobility Suite"
+    },
+    q2: {
+      a: "To ship items to customers",
+      b: "To receive items into the warehouse",
+      c: "To pay invoices"
+    },
+    q3: {
+      a: "Billing Tab",
+      b: "Notes Tab",
+      c: "Details Tab"
+    }
+  };
+
+  function submitQuiz(event) {
+    event.preventDefault();
+
+    let score = 0;
+    let total = Object.keys(correctAnswers).length;
+    let detailedResults = "";
+
+    for (let key in correctAnswers) {
+      const selected = document.querySelector(`input[name="${key}"]:checked`);
+      const userAnswer = selected ? selected.value : "(no answer)";
+      const correctAnswer = correctAnswers[key];
+
+      const isCorrect = userAnswer === correctAnswer;
+      if (isCorrect) score++;
+
+      detailedResults += `${questionsText[key]}\n`;
+      detailedResults += `Your answer: ${answerChoicesText[key][userAnswer] || userAnswer} ${isCorrect ? "(Correct)" : "(Incorrect)"}\n`;
+      if (!isCorrect) {
+        detailedResults += `Correct answer: ${answerChoicesText[key][correctAnswer]}\n`;
+      }
+      detailedResults += `\n`;
+    }
+
+    const userEmail = document.getElementById("userEmail").value.trim();
+    const supervisorEmail = document.getElementById("supervisorEmail").value.trim();
+
+    const templateParams = {
+      user_email: userEmail,
+      supervisor_email: supervisorEmail,
+      score: `${score}/${total}`,
+      answers: detailedResults
+    };
+
+    emailjs.send("service_cjvvmio", "template_9ia9tpl", templateParams)
+      .then(() => {
+        alert("Your quiz has been submitted.");
+        document.getElementById("quiz-form").reset();
+      }, (error) => {
+        console.error("EmailJS Error:", error);
+        alert("There was an error submitting your quiz.");
+      });
+  }
+</script>
+
+</body>
+</html>
