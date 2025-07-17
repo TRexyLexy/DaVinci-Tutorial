@@ -1,7 +1,9 @@
 
-body {
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+* {
+  box-sizing: border-box;
+}
 
+body {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   background: #fff;
@@ -9,6 +11,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   font-weight: 400; 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
 }
 
 .container {
@@ -35,19 +39,23 @@ body {
 }
 
 .banner-inner {
-  max-width: 1200px;  
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center; 
+  justify-content: space-between;
   gap: 20px;
 }
+
 
 /* Logo and text inside banner */
 .banner-logo {
   width: 100px;
   height: auto;
   border-radius: 8px;
+  flex-shrink: 0; 
 }
+
 
 .banner-text h1 {
   margin: 0;
@@ -64,40 +72,38 @@ body {
 /* Larger styles for full screen */
 @media (min-width: 1400px) {
   .banner-text h1 {
-   font-size: 50px;
-   position: relative;
-   left: 70%;
-   right: 50%;
-   margin-top: -10vw;
-   margin-left: -50vw;
-   margin-right: -50vw;
-   padding: 1.5rem 2rem;
-
+    font-size: 50px;
+    position: relative;
+    left: 70%;
+    right: 50%;
+    margin-top: -10vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 1.5rem 2rem;
   }
 
   .banner-text p {
-   font-size: 35px;
-   position: relative;
-   left: 80%;
-   right: 50%;
-   margin-top: -3px;
-   margin-left: -50px;
-   margin-right: -20px;
-   padding: 1.5rem 2rem;
+    font-size: 35px;
+    position: relative;
+    left: 80%;
+    right: 50%;
+    margin-top: -3px;
+    margin-left: -50px;
+    margin-right: -20px;
+    padding: 1.5rem 2rem;
   }
 
   .banner-logo {
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-  position: relative;
-   left: 50%;
-   right: 50%;
-   transform: translateY(1px);
-   margin-left: -50vw;
-   margin-right: -50vw;
-   padding: 1.5rem 2rem;
-
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateY(1px);
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 2.5rem 2rem;
   }
 }
 
@@ -131,7 +137,8 @@ h1, h2, h3 {
   transition: background-color 0.3s ease;
 }
 .step-nav button:hover {
-  background-color: #ff3c3c;
+  background: linear-gradient(135deg, #5b0eb4, #1e63e0);
+  transform: scale(1.03);
 }
 
 /* Navigation Buttons */
@@ -150,7 +157,8 @@ nav.nav-buttons a {
   font-weight: bold;
 }
 nav.nav-buttons a:hover {
-  background-color: #ff3c3c;
+  background: linear-gradient(135deg, #5b0eb4, #1e63e0);
+  transform: scale(1.03);
 }
 
 /* Step Counter */
@@ -163,7 +171,7 @@ nav.nav-buttons a:hover {
 /* Images */
 img { 
   max-width: 700px;
-  margin: 10px 0:
+  margin: 10px 0;
   width: 100%;
   border-radius: 12px;
   margin-top: 10px;
@@ -211,6 +219,7 @@ img {
   margin-top: 8px;
   font-weight: bold;
 }
+
 .top-nav {
   background: linear-gradient(to bottom, #ff3c3c, #000);
   padding: 0px;
@@ -232,10 +241,10 @@ img {
 
 .top-nav a:hover {
   background-color: #ff3c3c;
-
 }
+
 .color-block {
-  width: 700px;       
+  width: 1200px;       
   height: 250px;      
   background: linear-gradient(to bottom, #ff3c3c, #000);
   border-radius: 4px; 
@@ -243,8 +252,8 @@ img {
   margin-left: 59px;   
   margin-bottom: -600px;  
   vertical-align: middle;  
-
 }
+
 #main-img {
   width: 350px;     
   height: auto; 
@@ -252,17 +261,17 @@ img {
   top: 50px;
   left: 10px;
 }
+
 @media (min-width: 1200px) {
   #main-img {
-   width: 350px;
-   height: auto;
-   position: relative; 
-   top: 50px;
-   left: -500px;
+    width: 350px;
+    height: auto;
+    position: relative; 
+    top: 50px;
+    left: -500px;
   }
-
-
 }
+
 .login-box {
   max-width: 400px;
   margin: 80px auto;
@@ -273,12 +282,16 @@ img {
   text-align: center;
 }
 
-.login-box input[type="email"] {
-  padding: 10px;
+.login-box input[type="email"],
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  display: block;
   width: 80%;
-  margin: 10px 0;
+  padding: 10px;
+  margin: 10px auto;
   border: 1px solid #000;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .login-box button {
@@ -289,10 +302,54 @@ img {
   color: #000;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 15px;
 }
 
 .login-box button:hover {
-  background-color: #ff3c3c;
+  background: linear-gradient(135deg, #5b0eb4, #1e63e0);
+  transform: scale(1.03);
 }
 
+.lesson-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.lesson-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #a30707, #fd2d2d);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.lesson-btn:hover {
+  background: linear-gradient(135deg, #fd2d2d, #ff3c3c);
+  transform: scale(1.03);
+}
+
+#logout-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #a30707, #fd2d2d);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+#logout-btn:hover {
+  background: linear-gradient(135deg, #fd2d2d, #ff3c3c);
+  transform: scale(1.03);
 }

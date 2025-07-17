@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-  if (localStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
 <head>
   <meta charset="UTF-8" />
   <title>DaVinci Tutorial – Lesson Index</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    if (localStorage.getItem("authenticated") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
 
-  <!-- Full-width banner outside container -->
+  <!-- Banner -->
   <header class="site-banner">
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
-    <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
-
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
     <div class="banner-text">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+
       <h1>BRW WMS Training Portal</h1>
+
     </div>
     <nav class="top-nav">
       <a href="index.html">Home</a>
       <a href="lessons.html">Lessons</a>
       <a href="help.html">Help</a>
+      <a href="quiz.html">Quiz</a>
     </nav>
   </header>
 
+  <!-- Main Content -->
+  <div class="lesson-buttons">
+  <a href="lesson1.html" class="lesson-btn">Lesson 1: Getting Started</a>
+  <a href="lesson2.html" class="lesson-btn">Lesson 2: Setup</a>
+  <a href="lesson3.html" class="lesson-btn">Lesson 3: Order Management</a>
+  <a href="lesson4.html" class="lesson-btn">Lesson 4: Billing</a>
+</div>
 
-  <!-- Main content -->
-  <div class="container">
-    <h1>BRW WMS Guided Lessons</h1>
-    <ul class="lesson-list">
-      <li><a href="lesson1.html">Lesson 1: Getting Started</a></li>
-      <li><a href="lesson2.html">Lesson 2: Setup</a></li>
-      <li><a href="lesson3.html">Lesson 3: Order Management</a></li>
-      <li><a href="lesson4.html">Lesson 4: Billing</a></li>
-    </ul>
-  </div>
 
- 
+  <script>
+    // Show user's name from sessionStorage
+    const userName = sessionStorage.getItem("userName");
+    if (userName) {
+      document.getElementById("user-display-name").textContent = `Logged in as: ${userName}`;
+    }
+
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

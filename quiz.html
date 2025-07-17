@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-  if (localStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
 
 <head>
   <meta charset="UTF-8">
@@ -16,7 +11,8 @@
       background-color: #f2f2f2;
       padding: 20px;
     }
-    .quiz-container {
+
+    .quiz-container, .intro-form {
       background: #fff;
       padding: 20px;
       max-width: 800px;
@@ -24,13 +20,16 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .question {
       margin-bottom: 20px;
     }
+
     label {
       display: block;
       margin: 4px 0;
     }
+
     input[type="email"], input[type="text"] {
       width: 100%;
       padding: 8px;
@@ -38,6 +37,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     .submit-btn {
       padding: 10px 20px;
       background-color: #005da3;
@@ -47,17 +47,30 @@
       font-size: 16px;
       cursor: pointer;
     }
+
     .submit-btn:hover {
       background-color: #003e70;
     }
   </style>
 </head>
+
 <body>
 
-<div class="quiz-container">
-  <h2>DaVinci WMS Quiz</h2>
+<!-- Intro Form -->
+<div class="intro-form" id="intro-form">
+  <h2>Before you begin the quiz</h2>
+  <input type="text" id="quizName" placeholder="Your Full Name" required />
+  <input type="email" id="quizEmail" placeholder="Your Email" required />
+  <input type="email" id="supervisorEmail" placeholder="Supervisor's Email" required />
+  <br><br>
+  <button class="submit-btn" onclick="startQuiz()">Start Quiz</button>
+  <p id="form-error" style="color: red;"></p>
+</div>
+
+<!-- Quiz Form (hidden until verified) -->
+<div class="quiz-container" id="quiz-container" style="display: none;">
+  <h2>DaVinci WMS Quiz - Welcome, <span id="quizUserName"></span></h2>
   <form id="quiz-form" onsubmit="submitQuiz(event)">
-    
     <div class="question">
       <h4>1. What does WMS stand for?</h4>
       <label><input type="radio" name="q1" value="a" required> Warehouse Management System</label>
@@ -79,20 +92,15 @@
       <label><input type="radio" name="q3" value="c"> Details Tab</label>
     </div>
 
-    <label for="userEmail"><strong>Your Email:</strong></label>
-    <input type="email" id="userEmail" name="userEmail" placeholder="e.g. john@company.com" required>
-
-    <label for="supervisorEmail"><strong>Supervisor's Email:</strong></label>
-    <input type="email" id="supervisorEmail" name="supervisorEmail" placeholder="e.g. supervisor@company.com" required>
-
     <br><br>
     <button class="submit-btn" type="submit">Submit Quiz</button>
   </form>
 </div>
 
 <script>
+  // Initialize EmailJS
   (function() {
-    emailjs.init("BTA8oZMFXMkqnB74u"); 
+    emailjs.init("BTA8oZMFXMkqnB74u");
   })();
 
   const correctAnswers = {
@@ -125,6 +133,37 @@
     }
   };
 
+  function startQuiz() {
+    const name = document.getElementById("quizName").value.trim();
+    const email = document.getElementById("quizEmail").value.trim();
+    const supervisor = document.getElementById("supervisorEmail").value.trim();
+    const error = document.getElementById("form-error");
+
+    if (!name || !email || !supervisor) {
+      error.textContent = "Please fill out all fields.";
+      return;
+    }
+
+    if (!validateEmail(email) || !validateEmail(supervisor)) {
+      error.textContent = "Enter valid email addresses.";
+      return;
+    }
+
+    // Store user info
+    sessionStorage.setItem("quizName", name);
+    sessionStorage.setItem("quizEmail", email);
+    sessionStorage.setItem("quizSupervisor", supervisor);
+
+    // Show quiz, hide intro
+    document.getElementById("intro-form").style.display = "none";
+    document.getElementById("quiz-container").style.display = "block";
+    document.getElementById("quizUserName").textContent = name;
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   function submitQuiz(event) {
     event.preventDefault();
 
@@ -136,7 +175,6 @@
       const selected = document.querySelector(`input[name="${key}"]:checked`);
       const userAnswer = selected ? selected.value : "(no answer)";
       const correctAnswer = correctAnswers[key];
-
       const isCorrect = userAnswer === correctAnswer;
       if (isCorrect) score++;
 
@@ -148,12 +186,10 @@
       detailedResults += `\n`;
     }
 
-    const userEmail = document.getElementById("userEmail").value.trim();
-    const supervisorEmail = document.getElementById("supervisorEmail").value.trim();
-
     const templateParams = {
-      user_email: userEmail,
-      supervisor_email: supervisorEmail,
+      user_email: sessionStorage.getItem("quizEmail"),
+      supervisor_email: sessionStorage.getItem("quizSupervisor"),
+      user_name: sessionStorage.getItem("quizName"),
       score: `${score}/${total}`,
       answers: detailedResults
     };

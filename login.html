@@ -16,7 +16,8 @@
     <h2>DaVinci WMS Login</h2>
 
     <form onsubmit="handleLogin(event)">
-      <input type="email" id="email" placeholder="Enter your email" required />
+      <input type="text" id="email" placeholder="Enter your email or username (e.g. john.smith)" required />
+
       <input type="password" id="password" placeholder="Enter the password" required />
       <button type="submit">Log In</button>
       <p id="error-message"></p>
@@ -24,53 +25,67 @@
   </div>
 
   <script>
-    const allowedEmails = [
-      "alexiya.wright@brwnow.com",
-      "derrick.vanover@brwnow.com",
-      "jane.smith@brwilliams.com"
-    ];
+  const userAccounts = {
+    "alexiya.wright@brwnow.com": {
+      username: "alexiya.wright",
+      name: "Alexiya Wright"
+    },
+    "derrick.vanover@brwnow.com": {
+      username: "derrick.vanover",
+      name: "Derrick Vanover"
+    },
+    "amy.bumpus@brwnow.com": {
+      username: "amy.bumpus",
+      name: "Amy Bumpus "
+    }, 
 
-    const userDirectory = {
-      "alexiya.wright@brwnow.com": "Alexiya Wright",
-      "derrick.vanover@brwnow.com": "Derrick Vanover",
-      "jane.smith@brwilliams.com": "Jane Smith"
-    };
+   "jason.smart@brwnow.com": {
+      username: "jason.smart",
+      name: "Jason Smart"
+    },
 
-    const universalPassword = "brwilliams2025";
+    "guest": {
+      username: "guestuser",
+      name: "Guest User"
+    }
+  };
 
-    function handleLogin(event) {
-      event.preventDefault();
+  const universalPassword = "brwilliams2025";
 
-      const email = document.getElementById("email").value.trim().toLowerCase().replace(/\u200B/g, "");
-      const password = document.getElementById("password").value.trim();
-      const errorMessage = document.getElementById("error-message");
+  function handleLogin(event) {
+    event.preventDefault();
 
-      if (!allowedEmails.includes(email)) {
-        errorMessage.textContent = "Access denied. Email not recognized.";
-        errorMessage.style.display = "block";
-        return;
+    const input = document.getElementById("email").value.trim().toLowerCase().replace(/\u200B/g, "");
+    const password = document.getElementById("password").value.trim();
+    const errorMessage = document.getElementById("error-message");
+
+    let matchedEmail = null;
+    let matchedName = null;
+
+    // Match by full email or by username
+    for (const email in userAccounts) {
+      const { username, name } = userAccounts[email];
+      if (input === email || input === username) {
+        matchedEmail = email;
+        matchedName = name;
+        break;
       }
-
-      if (password !== universalPassword) {
-        errorMessage.textContent = "Incorrect password.";
-        errorMessage.style.display = "block";
-        return;
-      }
-
-      const name = userDirectory[email] || "User";
-
-      // Login successful — use sessionStorage for session-only login
-      sessionStorage.setItem("authenticated", "true");
-      sessionStorage.setItem("userName", name);
-      sessionStorage.setItem("userEmail", email);
-
-      window.location.href = "index.html";
     }
 
-    function logout() {
-      sessionStorage.clear();
-      window.location.href = "login.html";
+    if (!matchedEmail || password !== universalPassword) {
+      errorMessage.textContent = "Access denied. Invalid username or password.";
+      errorMessage.style.display = "block";
+      return;
     }
-  </script>
+
+    // Success: store session data
+    sessionStorage.setItem("authenticated", "true");
+    sessionStorage.setItem("userName", matchedName);
+    sessionStorage.setItem("userEmail", matchedEmail);
+    window.location.href = "index.html";
+  }
+</script>
+
+
 </body>
 </html>
