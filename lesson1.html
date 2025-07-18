@@ -5,21 +5,30 @@
   <title>Lesson 1: Getting Started</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
- 
- <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
 
-
+  <!-- Only ONE authentication script, placed early -->
   <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
 
+  <style>
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
+    }
+    .step-nav {
+      margin-top: 20px;
+    }
+    .step-counter {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <header class="site-banner">
@@ -42,26 +51,24 @@
   <div class="lesson-container">
     <p><a href="index.html">Back to homepage</a></p>
     <h1>Lesson 1: Getting Started</h1>
-    <img src="Slide3.PNG" alt="Title Slide" width="700" />
 
-    <h2>Logging In</h2>
-    <p>To begin using DaVinci WMS:</p>
-    <ol>
-      <li>Open your web browser</li>
-      <li>Navigate to the provided DaVinci WMS URL</li>
-      <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
-    </ol>
-    <img src="Slide4.PNG" alt="Dashboard Overview" />
-
-    <div class="step-counter" id="step-counter">1 of 3</div>
     <div id="lesson-steps">
-      <div class="step active"></div>
+      <div class="step active">
+        <h2>Logging In</h2>
+        <p>To begin using DaVinci WMS:</p>
+        <ol>
+          <li>Open your web browser</li>
+          <li>Navigate to the provided DaVinci WMS URL</li>
+          <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
+        </ol>
+        <img src="Slide3.PNG" alt="Title Slide" width="700" />
+      </div>
 
       <div class="step">
         <h2>Exploring the Dashboard</h2>
         <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics, such as:</p>
         <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
-        <img src="Slide5.PNG" alt="Dashboard Overview" />
+        <img src="Slide4.PNG" alt="Dashboard Overview" />
       </div>
 
       <div class="step">
@@ -77,6 +84,8 @@
         <img src="Slide6.PNG" alt="Navigation Detail Slide" />
       </div>
     </div>
+
+    <div class="step-counter" id="step-counter">1 of 3</div>
 
     <div class="step-nav">
       <button id="back-btn" onclick="prevStep()" disabled>Back</button>
@@ -100,7 +109,7 @@
   </section>
 
   <script>
-    // Steps navigation
+    // Step navigation logic
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const backBtn = document.getElementById("back-btn");
@@ -112,9 +121,8 @@
         step.classList.toggle("active", i === index);
       });
       stepCounter.textContent = `${index + 1} of ${steps.length}`;
-
-      backBtn.disabled = (index === 0);
-      nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+      backBtn.disabled = index === 0;
+      nextBtn.textContent = index === steps.length - 1 ? "Done" : "Next";
     }
 
     function nextStep() {
@@ -133,7 +141,6 @@
 
     showStep(currentStep);
 
-    // Logout function
     function logout() {
       sessionStorage.clear();
       window.location.href = "login.html";
