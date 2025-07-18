@@ -5,16 +5,14 @@
   <title>Getting Started with DaVinci</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  
+  <!-- Redirect to login if not authenticated -->
   <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
 
   <style>
     .site-banner {
@@ -28,8 +26,15 @@
       font-size: 1.5em;
       color: #333;
     }
+
+    #logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   </style>
 </head>
+
 <body>
   <header class="site-banner">
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
@@ -46,9 +51,9 @@
     </nav>
   </header>
 
-    <button id="logout-btn" onclick="logout()">Log Out</button>
-
+  <!-- Welcome and Logout -->
   <h2 id="welcome-message"></h2>
+  <button id="logout-btn" onclick="logout()">Log Out</button>
 
   <div class="color-block"></div>
   <div class="container">
@@ -61,19 +66,17 @@
   </div>
 
   <script>
-    // Fill welcome message with user's name
+    // Show user's name if logged in
     const name = sessionStorage.getItem("userName");
     if (name) {
       document.getElementById("welcome-message").textContent = `Welcome, ${name}!`;
     }
 
-    // Logout function
     function logout() {
       sessionStorage.clear();
       window.location.href = "login.html";
     }
 
-    // Show or hide logout button after page loads
     window.onload = function () {
       const logoutBtn = document.getElementById("logout-btn");
       if (sessionStorage.getItem("authenticated") !== "true") {
