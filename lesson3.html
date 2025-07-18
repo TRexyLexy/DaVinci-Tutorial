@@ -5,12 +5,20 @@
   <title>Getting Started with DaVinci</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
-   <script>
+  <script>
+  if (sessionStorage.getItem("authenticated") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
+
+
+  <script>
   if (sessionStorage.getItem("authenticated") !== "true") {
     sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
     window.location.href = "login.html";
   }
 </script>
+
 
   <style>
     .site-banner {
