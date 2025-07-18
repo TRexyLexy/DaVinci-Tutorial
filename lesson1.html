@@ -2,59 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Getting Started with DaVinci</title>
+  <title>Lesson 1: Getting Started</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
-
-
- <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
-    // Redirect to login if not authenticated
-    <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
-
-  <style>
-    .site-banner {
-      position: relative;
-      padding-bottom: 10px;
+ 
+  <script>
+    // Redirect if not authenticated, save redirect path
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
     }
-    #welcome-message {
-      text-align: center;
-      margin: 10px 0 30px 0;
-      font-size: 1.5em;
-      color: #333;
-    }
-    #logout-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 8px 16px;
-      background-color: #005da3;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-    #logout-btn:hover {
-      background-color: #003e70;
-    }
-  </style>
+  </script>
 </head>
 <body>
   <header class="site-banner">
@@ -72,46 +30,29 @@
     </nav>
   </header>
 
+  <button id="logout-btn" onclick="logout()">Log Out</button>
 
-
-<script>
-  if (localStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
   <div class="lesson-container">
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Lesson 1: Getting Started</title>
-<link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-</head>
-<body>
-
     <p><a href="index.html">Back to homepage</a></p>
     <h1>Lesson 1: Getting Started</h1>
-<img src="Slide3.PNG" alt="Title Slide" width="700" />
+    <img src="Slide3.PNG" alt="Title Slide" width="700" />
 
+    <h2>Logging In</h2>
+    <p>To begin using DaVinci WMS:</p>
+    <ol>
+      <li>Open your web browser</li>
+      <li>Navigate to the provided DaVinci WMS URL</li>
+      <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
+    </ol>
+    <img src="Slide4.PNG" alt="Dashboard Overview" />
 
-        <h2>Logging In</h2>
-        <p>To begin using DaVinci WMS:</p>
-        <ol>
-          <li>Open your web browser</li>
-          <li>Navigate to the provided DaVinci WMS URL</li>
-          <li>Enter your <strong>Username</strong> and <strong>Password</strong> when prompted</li>
-        </ol>
-        <img src="Slide4.PNG" alt="Dashboard Overview" />
-
-<div class="step-counter" id="step-counter"> 1 of 3</div>
+    <div class="step-counter" id="step-counter">1 of 3</div>
     <div id="lesson-steps">
-    <div class="step active">
-      </div>
+      <div class="step active"></div>
 
       <div class="step">
         <h2>Exploring the Dashboard</h2>
         <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics, such as:</p>
-
         <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
         <img src="Slide5.PNG" alt="Dashboard Overview" />
       </div>
@@ -119,19 +60,15 @@
       <div class="step">
         <h2>The Navigation Menu</h2>
         <p>In the top-left corner, you’ll see the <strong>three-line menu icon</strong> (also known as the “hamburger menu”). This dropdown is essential for moving around the system. However, you can also use the navigation menu as well.</p>
-
-<p>From here, you can:</p>
+        <p>From here, you can:</p>
         <ul>
           <li><strong>Create</strong> new orders</li>
           <li><strong>Edit</strong> existing records</li>
           <li><strong>View</strong> various system features</li>
         </ul>
         <p>Get familiar with this menu — you’ll use it constantly while working in DaVinci WMS.</p>
-
-
         <img src="Slide6.PNG" alt="Navigation Detail Slide" />
-              </div>
-
+      </div>
     </div>
 
     <div class="step-nav">
@@ -143,10 +80,20 @@
       <a href="index.html">Home</a>
       <a href="lesson2.html">Next Lesson</a>
     </nav>
+  </div>
 
-     </div>
+  <hr />
+
+  <section class="resources">
+    <h3>Helpful Resources</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=VhpfVpHAilg&t=7s" target="_blank">▶️ Getting Started (YouTube)</a></li>
+      <li><a href="https://zendesk.wdgcorp.com/hc/en-us/articles/16559802334484-Getting-Started" target="_blank">📄 Getting Started (Article)</a></li>
+    </ul>
+  </section>
 
   <script>
+    // Steps navigation
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const backBtn = document.getElementById("back-btn");
@@ -157,16 +104,10 @@
       steps.forEach((step, i) => {
         step.classList.toggle("active", i === index);
       });
-      stepCounter.textContent = ` ${index + 1} of ${steps.length}`;
+      stepCounter.textContent = `${index + 1} of ${steps.length}`;
 
-      // Disable back button on first step
       backBtn.disabled = (index === 0);
-      // Change next button text on last step
-      if(index === steps.length - 1) {
-        nextBtn.textContent = "Done ";
-      } else {
-        nextBtn.textContent = "Next ";
-      }
+      nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
     }
 
     function nextStep() {
@@ -183,24 +124,13 @@
       }
     }
 
+    showStep(currentStep);
+
+    // Logout function
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = "login.html";
+    }
   </script>
-
-<hr />
-<section class="resources">
-  <h3>Helpful Resources</h3>
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=VhpfVpHAilg&t=7s" target="_blank">
-        ▶️ Getting Started (YouTube)
-      </a>
-    </li>
-    <li>
-      <a href="https://zendesk.wdgcorp.com/hc/en-us/articles/16559802334484-Getting-Started" target="_blank">
-        📄 Gettiing Started (Article)
-      </a>
-    </li>
-  </ul>
-</section>
-
 </body>
 </html>
