@@ -5,8 +5,15 @@
   <title>Lesson 1: Getting Started</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+<script>
+  if (sessionStorage.getItem("authenticated") !== "true") {
+    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+    window.location.href = "login.html";
+  }
+</script>
 
-  <!-- Only ONE authentication script, placed early -->
+
+  
   <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
       sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
@@ -14,21 +21,6 @@
     }
   </script>
 
-  <style>
-    .step {
-      display: none;
-    }
-    .step.active {
-      display: block;
-    }
-    .step-nav {
-      margin-top: 20px;
-    }
-    .step-counter {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
   <header class="site-banner">

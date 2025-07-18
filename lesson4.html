@@ -6,7 +6,15 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- Redirect if not authenticated -->
+
+<script>
+  if (sessionStorage.getItem("authenticated") !== "true") {
+    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+    window.location.href = "login.html";
+  }
+</script>
+
+
   <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
       sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
@@ -14,32 +22,12 @@
     }
   </script>
 
-  <style>
-    .site-banner {
-      position: relative;
-      padding-bottom: 10px;
-    }
-    #logout-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 8px 16px;
-      background-color: #005da3;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-    #logout-btn:hover {
-      background-color: #003e70;
-    }
-  </style>
 </head>
 <body>
-  <button id="logout-btn" onclick="logout()">Logout</button>
 
   <header class="site-banner">
+  <button id="logout-btn" onclick="logout()">Log Out</button>
+
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
       <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
