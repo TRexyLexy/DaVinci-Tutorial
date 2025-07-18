@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <title>DaVinci Tutorial – Lesson Index</title>
   <link rel="stylesheet" href="style.css" />
-  <script>
-    if (localStorage.getItem("authenticated") !== "true") {
-      window.location.href = "login.html";
-    }
-  </script>
+ 
+    <script>
+  if (sessionStorage.getItem("authenticated") !== "true") {
+    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+    window.location.href = "login.html";
+  }
+</script>
+
 </head>
 <body>
 
