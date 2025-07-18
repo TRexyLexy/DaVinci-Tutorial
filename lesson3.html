@@ -2,34 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Getting Started with DaVinci</title>
+  <title>Lesson 3: Order Management (Receiving and Shipping)</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- 🔐 Session check & redirect logic -->
   <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
-
-
-  <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
 
   <style>
     .site-banner {
       position: relative;
       padding-bottom: 10px;
-    }
-    #welcome-message {
-      text-align: center;
-      margin: 10px 0 30px 0;
-      font-size: 1.5em;
-      color: #333;
     }
     #logout-btn {
       position: fixed;
@@ -57,175 +45,4 @@
       <h1>BRW WMS Training Portal</h1>
     </div>
     <nav class="top-nav">
-      <a href="index.html">Home</a>
-      <a href="lessons.html">Lessons</a>
-      <a href="help.html">Help</a>
-      <a href="quiz.html">Quiz</a>
-    </nav>
-  </header>
-
-<script>
-  if (localStorage.getItem("authenticated") !== "true") {
-    window.location.href = "login.html";
-  }
-</script>
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Lesson 3: Order Management (Receiving and Shipping)</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-</head>
-<body>
-  <div class="container">
-    <p><a href="index.html">⬅️ Back to homepage</a></p>
-    <h1>Lesson 3: Order Management (Receiving and Shipping)</h1>
-
-    <div class="step-counter" id="step-counter">Step 1 of 2</div>
-
-    <div id="lesson-steps">
-      <div class="step active">
-        <h2>Receiving Inventory</h2>
-         <img src="Slide11.JPG" alt="Warehouse Setup Slide" />
-        <p>To create a receiving order, navigate to the dropdown menu (three lines) in the top left corner.<br>
-        Select <strong>"Orders"</strong> then <strong>"Receiving Orders"</strong>.</p>
-
-         <img src="Slide12.JPG" alt="Warehouse Setup Slide" />
-        <p>From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus), and then select <strong>"Create New Receipt"</strong>.</p>
-
-        <p>Fill out the necessary fields. A <strong>Transaction Number</strong> will be created after saving.</p>
-        <p>You can create new carriers or suppliers using the insert button next to the desired field.</p>
-
-        <p>To add items, click <strong>"Line Entries"</strong> on the left sidebar under <strong>"General"</strong>, then click the insert button. A pop-up menu will appear where you can input the item code and planned quantity.</p>
-
-        <p>To print a pre-receipt or receipt, upload the necessary documents. Click <strong>"Action"</strong> in the top right corner, then <strong>"Print"</strong> to see various printing options.</p>
-      </div>
-
-      <div class="step">
-        <h2>Shipping Orders</h2>
-         <img src="Slide17.JPG" alt="Warehouse Setup Slide" />
-        <p>The initial steps for shipping orders are similar to receiving orders.<br>
-        Instead of <strong>"Receiving Orders"</strong>, choose <strong>"Shipping Orders"</strong> from the dropdown menu.</p>
-
-        <p>The "create order" menu for shipping is very similar to that for receiving.<br>
-        Adding items to a shipping order is similar to receiving orders.</p>
-
-        <p>For <strong>"System Selected Locations"</strong>, enter the item code, unit price, ordered quantity, and shipped quantity. DaVinci will automatically calculate quantity and weight.</p>
-
-        <p>Adding line items as <strong>"Manual Selected Locations"</strong> allows you to search from existing item options.</p>
-
-        <p>After completing your shipping order, several printing options are available.</p>
-      </div>
-    </div>
-
-    <div class="step-nav">
-      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
-      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
-    </div>
-
-    <nav class="nav-buttons">
-      <a href="lesson2.html">⬅️ Previous Lesson</a>
-      <a href="lesson4.html">Next Lesson ➡️</a>
-    </nav>
-<h2>📝 Lesson 3 Quiz</h2>
-
-<!-- Question 1 -->
-<div class="quiz-question">
-  <p>1. Where do you go to create a receiving order?</p>
-  <button onclick="checkAnswer(this, 'correct')">Orders > Receiving Orders</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Dashboard > Reports</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Business Partners > Accounts</button>
-  <p class="feedback"></p>
-</div>
-
-<!-- Question 2 -->
-<div class="quiz-question">
-  <p>2. What button do you click to create a new receipt?</p>
-  <button onclick="checkAnswer(this, 'correct')">Insert (Green Plus)</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Edit</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Delete</button>
-  <p class="feedback"></p>
-</div>
-
-<!-- Question 3 -->
-<div class="quiz-question">
-  <p>3. How do you add items to a receiving order?</p>
-  <button onclick="checkAnswer(this, 'correct')">Click Line Entries, then Insert</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Click Dashboard, then Add</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Select from the Billing tab</button>
-  <p class="feedback"></p>
-</div>
-
-<!-- Question 4 -->
-<div class="quiz-question">
-  <p>4. What field does the system calculate automatically in shipping orders?</p>
-  <button onclick="checkAnswer(this, 'correct')">Quantity and Weight</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Supplier Name</button>
-  <button onclick="checkAnswer(this, 'incorrect')">Item Description</button>
-  <p class="feedback"></p>
-</div>
-
-<!-- Question 5 -->
-<div class="quiz-question">
-  <p>5. What is the difference between System Selected and Manual Selected Locations?</p>
-  <button onclick="checkAnswer(this, 'correct')">System = Auto-calculate; Manual = Choose location</button>
-  <button onclick="checkAnswer(this, 'incorrect')">System = Print-only; Manual = Invoice only</button>
-  <button onclick="checkAnswer(this, 'incorrect')">They are the same</button>
-  <p class="feedback"></p>
-</div>
-
-<script>
-  function checkAnswer(button, status) {
-    const container = button.closest(".quiz-question");
-    const feedback = container.querySelector(".feedback");
-    const buttons = container.querySelectorAll("button");
-
-    if (status === 'correct') {
-      feedback.textContent = "🎉 Yay! That’s correct!";
-      feedback.style.color = "#28a745";
-      buttons.forEach(btn => btn.disabled = true);
-    } else {
-      feedback.textContent = "😢 Oops! Try a different answer!";
-      feedback.style.color = "#d63384";
-      button.disabled = true;
-    }
-  }
-</script>
-
-  </div>
-
-  <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
-    const backBtn = document.getElementById("back-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const stepCounter = document.getElementById("step-counter");
-
-    function showStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle("active", i === index);
-      });
-      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
-
-      backBtn.disabled = (index === 0);
-      nextBtn.textContent = (index === steps.length - 1) ? "Done ✅" : "Next ➡️";
-    }
-
-    function nextStep() {
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-      }
-    }
-
-    function prevStep() {
-      if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    }
-
-    showStep(currentStep);
-  </script>
-</body>
-</html>
+      <a
