@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lesson 3: Order Management (Receiving and Shipping)</title>
+  <title>Lesson 3: Order Management </title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" type="image/png" href="Favicon.png" />
 <script>
   if (sessionStorage.getItem("authenticated") !== "true") {
     sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
@@ -50,32 +50,33 @@
 
   <!-- Lesson Content -->
   <div class="container">
-    <p><a href="index.html">⬅️ Back to homepage</a></p>
-    <h1>Lesson 3: Order Management (Receiving and Shipping)</h1>
-
-    <div class="step-counter" id="step-counter">Step 1 of 2</div>
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 3: Order Management </h1>
 
     <div id="lesson-steps">
       <div class="step active">
         <h2>Receiving Inventory</h2>
-        <img src="Slide11.JPG" alt="Warehouse Setup Slide" />
+        <img src="Slide12.PNG" alt="Warehouse Setup Slide" />
         <p>To create a receiving order, navigate to the dropdown menu (three lines) in the top left corner.<br>
           Select <strong>"Orders"</strong> then <strong>"Receiving Orders"</strong>.</p>
 
-        <img src="Slide12.JPG" alt="Warehouse Setup Slide" />
-        <p>From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus), and then select <strong>"Create New Receipt"</strong>.</p>
+            <p>From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus), and then select <strong>"Create New Receipt"</strong>.</p>
 
         <p>Fill out the necessary fields. A <strong>Transaction Number</strong> will be created after saving.</p>
+        <img src="Slide13.PNG" alt="Warehouse Setup Slide" />
         <p>You can create new carriers or suppliers using the insert button next to the desired field.</p>
 
         <p>To add items, click <strong>"Line Entries"</strong> on the left sidebar under <strong>"General"</strong>, then click the insert button. A pop-up menu will appear where you can input the item code and planned quantity.</p>
 
         <p>To print a pre-receipt or receipt, upload the necessary documents. Click <strong>"Action"</strong> in the top right corner, then <strong>"Print"</strong> to see various printing options.</p>
+
+    <div class="step-counter" id="step-counter">Step 1 of 2</div>
+
       </div>
 
       <div class="step">
         <h2>Shipping Orders</h2>
-        <img src="Slide17.JPG" alt="Warehouse Setup Slide" />
+        <img src="Slide15.PNG" alt="Warehouse Setup Slide" />
         <p>The initial steps for shipping orders are similar to receiving orders.<br>
           Instead of <strong>"Receiving Orders"</strong>, choose <strong>"Shipping Orders"</strong> from the dropdown menu.</p>
 
@@ -91,77 +92,20 @@
     </div>
 
     <div class="step-nav">
-      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
-      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next </button>
     </div>
 
     <nav class="nav-buttons">
-      <a href="lesson2.html">⬅️ Previous Lesson</a>
-      <a href="lesson4.html">Next Lesson ➡️</a>
+      <a href="lesson2.html">Previous Lesson</a>
+      <a href="lesson4.html">Next Lesson</a>
     </nav>
 
-    <h2>📝 Lesson 3 Quiz</h2>
-
-    <!-- Quiz Questions -->
-    <div class="quiz-question">
-      <p>1. Where do you go to create a receiving order?</p>
-      <button onclick="checkAnswer(this, 'correct')">Orders > Receiving Orders</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Dashboard > Reports</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Business Partners > Accounts</button>
-      <p class="feedback"></p>
+   
     </div>
 
-    <div class="quiz-question">
-      <p>2. What button do you click to create a new receipt?</p>
-      <button onclick="checkAnswer(this, 'correct')">Insert (Green Plus)</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Edit</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Delete</button>
-      <p class="feedback"></p>
-    </div>
-
-    <div class="quiz-question">
-      <p>3. How do you add items to a receiving order?</p>
-      <button onclick="checkAnswer(this, 'correct')">Click Line Entries, then Insert</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Click Dashboard, then Add</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Select from the Billing tab</button>
-      <p class="feedback"></p>
-    </div>
-
-    <div class="quiz-question">
-      <p>4. What field does the system calculate automatically in shipping orders?</p>
-      <button onclick="checkAnswer(this, 'correct')">Quantity and Weight</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Supplier Name</button>
-      <button onclick="checkAnswer(this, 'incorrect')">Item Description</button>
-      <p class="feedback"></p>
-    </div>
-
-    <div class="quiz-question">
-      <p>5. What is the difference between System Selected and Manual Selected Locations?</p>
-      <button onclick="checkAnswer(this, 'correct')">System = Auto-calculate; Manual = Choose location</button>
-      <button onclick="checkAnswer(this, 'incorrect')">System = Print-only; Manual = Invoice only</button>
-      <button onclick="checkAnswer(this, 'incorrect')">They are the same</button>
-      <p class="feedback"></p>
-    </div>
-  </div>
-
-  <!-- Navigation Script -->
-  <script>
-    function checkAnswer(button, status) {
-      const container = button.closest(".quiz-question");
-      const feedback = container.querySelector(".feedback");
-      const buttons = container.querySelectorAll("button");
-
-      if (status === 'correct') {
-        feedback.textContent = "🎉 Yay! That’s correct!";
-        feedback.style.color = "#28a745";
-        buttons.forEach(btn => btn.disabled = true);
-      } else {
-        feedback.textContent = "😢 Oops! Try a different answer!";
-        feedback.style.color = "#d63384";
-        button.disabled = true;
-      }
-    }
-
+   <script>
+   
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const backBtn = document.getElementById("back-btn");
@@ -174,7 +118,7 @@
       });
       stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
       backBtn.disabled = (index === 0);
-      nextBtn.textContent = (index === steps.length - 1) ? "Done ✅" : "Next ➡️";
+      nextBtn.textContent = (index === steps.length - 1) ? "Done " : "Next ";
     }
 
     function nextStep() {
@@ -193,3 +137,13 @@
 
     showStep(currentStep);
   </script>
+ <hr />
+
+  <section class="resources">
+    <h3>Helpful Resources</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=I6dpdf7T03U" target="_blank">▶️ Basics of Receiving (YouTube)</a></li>
+     
+    </ul>
+  </section>
+
