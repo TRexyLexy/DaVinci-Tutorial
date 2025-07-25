@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lesson 7: Kits</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="Favicon.png" />
+
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-banner">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+    <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
+    </a>
+    <div class="banner-text">
+      <h1>BRW WMS Training Portal</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="help.html">Help</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 7: Kits</h1>
+    <img src="Slide70.PNG"/>
+
+    <div class="step-counter" id="step-counter">Step 1 of 6</div>
+
+    <div id="lesson-steps">
+      <div class="step active">
+        <h2>Introduction to Kits</h2>
+        <p>A "kit" is a collection of individual items (components) assembled into a single, sellable unit. Kit management involves creating, tracking, building, and breaking down these assembled units in your inventory.</p>
+      </div>
+
+      <div class="step">
+        <h2>Creating Kits</h2>
+        <img src="Slide71.PNG"/>
+        <p><strong>Purpose:</strong> Define and build new kit configurations in your system.</p>
+        <ol>
+          <li>Navigate to <strong>Warehouse &gt; Kits/BOM (Bill of Materials)</strong>.</li>
+          <li>Click <strong>"Insert"</strong> and fill in the necessary kit details (e.g., item code, description, group).</li>
+          <li>Continue to <strong>"Create UOM"</strong> to define dimensions, weight, etc.</li>
+          <li>Then, <strong>"Create Kit"</strong> and assign items to the kit by searching and selecting them.</li>
+          <li>Click <strong>"Save"</strong>.</li>
+	<img src="Slide72.PNG"/>
+        </ol>
+        </div>
+
+      <div class="step">
+        <h2>Managing Kits (Kit Inventory)</h2>
+        <img src="Slide73.PNG"/>
+        <p><strong>Purpose:</strong> View and manage your existing kit inventory.</p>
+        <ol>
+          <li>Navigate to <strong>Warehouse &gt; Kit Inventory</strong>.</li>
+          <li>Search for an account to find available kits.</li>
+          <li>Highlight a kit to activate the toolbar options for management.</li>
+ 	<img src="Slide74.PNG"/>
+        </ol>
+        <p><strong>Important:</strong> Kit inventory and individual item inventory are separate. Assembled kits are counted in kit inventory, and their components are removed from item inventory.</p>
+      </div>
+
+      <div class="step">
+        <h2>Managing Kits (Toolbar Options)</h2>
+        <img src="Slide69.PNG"/>
+        <p><strong>Purpose:</strong> Perform various actions on kits within your inventory.</p>
+        <ul>
+          <li><strong>Inventory Adjust:</strong> Adjust kit quantities.</li>
+          <li><strong>Build Kit:</strong> Assemble raw materials into a kit (materials must be in the same location).</li>
+          <li><strong>Break Kit:</strong> Disassemble a kit back into its components.</li>
+          <li><strong>Relocate:</strong> Move kits to different locations.</li>
+          <li><strong>Change Status:</strong> Update the status of a kit.</li>
+          <li><strong>Allocation Details:</strong> View how kits are allocated.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h2>Kitting on Orders (Receiving & Shipping)</h2>
+        <img src="Slide70.PNG"/>
+        <p><strong>Purpose:</strong> Apply kits as line items when receiving or shipping goods.</p>
+        <h3>Receiving Orders</h3>
+        <ol>
+          <li>Begin in <strong>Receiving Orders</strong>.</li>
+          <li>Create an order and add required details.</li>
+          <li>When adding line items, enter the <strong>kit code</strong> (not an individual item code) along with quantity and location.</li>
+          <li>Save.</li>
+        </ol>
+        <h3>Shipping Orders</h3>
+        <p>The same steps apply for shipping orders.</p>
+      </div>
+
+      <div class="step">
+        <h2>Kitting on Work Orders</h2>
+        <img src="Slide71.PNG"/>
+        <p><strong>Purpose:</strong> Apply kits within work orders for internal assembly or tasks.</p>
+        <ol>
+          <li>Navigate to <strong>Work Orders</strong>.</li>
+          <li>Click <strong>"Insert"</strong>, then choose <strong>"Kitting"</strong>.</li>
+          <li>Select the account and enter the order number in the <strong>General</strong> tab.</li>
+          <li>In the <strong>Items</strong> box, enter the kit code, LPN, and location.</li>
+          <li>Click <strong>"Allocate Raw Materials"</strong> to assign components for the kit build.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson6.html">Previous Lesson</a>
+      <a href="index.html">Home</a>
+    </nav>
+
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const backBtn = document.getElementById("back-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const stepCounter = document.getElementById("step-counter");
+
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+        backBtn.disabled = (index === 0);
+        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+      }
+
+      function nextStep() {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+
+      showStep(currentStep);
+    </script>
+</body>
+</html>

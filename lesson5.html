@@ -2,18 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lesson 5: Billing</title>
+  <title>Lesson 5: Transportation Management</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
-
-
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
 
   <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
@@ -21,13 +12,11 @@
       window.location.href = "login.html";
     }
   </script>
-
 </head>
 <body>
 
   <header class="site-banner">
-  <button id="logout-btn" onclick="logout()">Log Out</button>
-
+    <button id="logout-btn" onclick="logout()">Log Out</button>
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
       <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
@@ -43,103 +32,169 @@
   </header>
 
   <div class="container">
-    <p><a href="index.html">⬅️ Back to homepage</a></p>
-    <h1>Lesson 4: Billing</h1>
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 5: Transportation Management</h1>
+    <img src="Slide35.PNG"/>
 
-    <div class="step-counter" id="step-counter">Step 1 of 5</div>
+    <div class="step-counter" id="step-counter">Step 1 of 10</div>
 
     <div id="lesson-steps">
       <div class="step active">
-        <h2>Viewing Accounts for Billing</h2>
-        <p>To view accounts for billing, navigate to the dashboard and the dropdown menu.</p>
-        <p>Select <strong>Business Partners</strong>, then <strong>Accounts</strong>.</p>
-        <img src="Slide22.JPG" alt="Dashboard Overview" />
-        <img src="Slide23.JPG" alt="Dashboard Overview" />
+        <h2>What Is Transportation Management?</h2>
+        <p>It’s the process of planning, executing, and controlling the movement of goods from origin to destination efficiently and cost-effectively.</p>
+        <p><strong>BRW’s Services:</strong> Trucking, Logistics, Warehousing, and Fulfillment.</p>
       </div>
 
       <div class="step">
-        <h2>Charge Codes</h2>
-        <p>Select an account and click <strong>Charge Codes</strong> on the left sidebar.</p>
-        <p>To create a new charge code, press the green insert button.</p>
-        <p>The charge code menu offers many different type options to choose from.</p>
-        <img src="Slide24.JPG" alt="Dashboard Overview" />
+        <h2>Key Operations & Terms</h2>
+        <ul>
+	<img src="Slide36.PNG"/>
+
+          <li><strong>Terminal Management:</strong> Set up and control locations.</li>
+          <li><strong>User Access:</strong> Manage permissions.</li>
+          <li><strong>Goods Movement:</strong> Pick Up, Delivery, Move, Return.</li>
+          <li><strong>WMS:</strong> Manages Receiving/Shipping.</li>
+          <li><strong>TMS:</strong> Manages Dispatch, Loads, Shipments.</li>
+        </ul>
       </div>
 
       <div class="step">
-        <h2>Assigning Charges (3-Step Process)</h2>
+        <h2>Creating Warehouse Terminals</h2>
+	<img src="Slide37.PNG"/>
+        <p><strong>Steps:</strong></p>
         <ol>
-          <li>Open an Order.</li>
-          <li>Enter <strong>Manual Charge Codes</strong> using the input fields for values (default is zero).</li>
-          <li>Verify <strong>Automatic Charge Codes</strong>, which are system-applied and appear on the right side.</li>
+          <li>Go to Dashboard &gt; Dropdown &gt; Settings &gt; Warehouse – Terminal.</li>
+          <li>Click <strong>Insert</strong> to create a new terminal.</li>
         </ol>
       </div>
 
       <div class="step">
-        <h2>Storage Charges & Default Billing</h2>
-        <p>There are numerous type options for storage charges depending on business rules.</p>
-        <p>Default billing provides a simple way to set up billing for accessorial and storage for all units of measure.</p>
+        <h2>Managing User Access</h2>
+	<img src="Slide38.PNG"/>
+        <p><strong>Steps:</strong></p>
+        <ol>
+          <li>Go to Settings &gt; Security &gt; Users.</li>
+          <li>Select a user and manage their terminal access.</li>
+          <li>Click <strong>Save</strong> after changes.</li>
+        </ol>
       </div>
 
       <div class="step">
-        <h2>Monthly Billing & General Billing Settings</h2>
-        <p>Monthly billing allows specific recurring fees to be applied each month in addition to storage fees.</p>
-        <p>The <strong>Billing</strong> section also includes invoice configuration and modes for renewal storage billing.</p>
+        <h2>Account Linking</h2>
+	<img src="Slide39.PNG"/>
+        <p><strong>Purpose:</strong> Accounts link warehousing and transportation together.</p>
+        <p><strong>Steps:</strong></p>
+        <ol>
+          <li>Dashboard &gt; Business Partners &gt; Accounts.</li>
+          <li>Click <strong>Insert</strong> to add a new account.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Creating Loads</h2>
+	<img src="Slide40.PNG"/>
+        <p><strong>Steps:</strong></p>
+        <ol>
+          <li>Dashboard &gt; Transportation &gt; Loads.</li>
+          <li>Click <strong>Insert</strong> and fill in load details (partners, origin, dates, cost).</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Creating Pickups & Deliveries</h2>
+	<img src="Slide41.PNG"/>
+        <p><strong>Pickup:</strong></p>
+        <ol>
+          <li>Go to <strong>Receiving Orders</strong>.</li>
+          <li>Select an order, click <strong>Actions</strong>, then <strong>Create Pickup</strong>.</li>
+        </ol>
+        <p><strong>Delivery:</strong></p>
+        <ol>
+          <li>Go to <strong>Shipping Orders</strong>.</li>
+          <li>Select an order, click <strong>Actions</strong>, then <strong>Create Delivery</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Dispatch Management</h2>
+	<img src="Slide42.PNG"/>
+        <p><strong>Steps:</strong></p>
+        <ol>
+          <li>Dashboard &gt; Transportation &gt; Dispatch.</li>
+          <li>View, edit, or create outbound shipments from this section.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Advanced Dispatch Tools</h2>
+	<img src="Slide43.PNG"/>
+        <ul>
+          <li><strong>Manage Loads:</strong> View/edit/create loads directly in Dispatch.</li>
+          <li><strong>Auto Refresh:</strong> Enable real-time updates every few minutes.</li>
+          <li><strong>Filters:</strong> Select Drivers, Shippers, Carriers, Equipment to manage views.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h2>Shipping Details</h2>
+	<img src="Slide44.PNG"/>
+        <p><strong>Steps:</strong></p>
+        <ol>
+          <li>Dashboard &gt; Transportation &gt; Shipments.</li>
+          <li>View shipment status, documentation, and update details as needed.</li>
+        </ol>
       </div>
     </div>
 
     <div class="step-nav">
-      <button id="back-btn" onclick="prevStep()" disabled>⬅️ Back</button>
-      <button id="next-btn" onclick="nextStep()">Next ➡️</button>
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
     </div>
 
     <nav class="nav-buttons">
-      <a href="lesson3.html">⬅️ Previous Lesson</a>
+      <a href="lesson3.html">Previous Lesson</a>
       <a href="index.html">Home</a>
     </nav>
 
-    <h2>🧾 Billing Overview</h2>
-    <p>In this lesson, you learned how to view accounts for billing, assign charge codes, configure default billing settings, and understand monthly billing.</p>
-  </div>
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const backBtn = document.getElementById("back-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const stepCounter = document.getElementById("step-counter");
 
-  <script>
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
-    const backBtn = document.getElementById("back-btn");
-    const nextBtn = document.getElementById("next-btn");
-    const stepCounter = document.getElementById("step-counter");
-
-    function showStep(index) {
-      steps.forEach((step, i) => {
-        step.classList.toggle("active", i === index);
-      });
-      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
-      backBtn.disabled = (index === 0);
-      nextBtn.textContent = (index === steps.length - 1) ? "Done ✅" : "Next ➡️";
-    }
-
-    function nextStep() {
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
-      } else {
-        window.location.href = "index.html";
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+        backBtn.disabled = (index === 0);
+        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
       }
-    }
 
-    function prevStep() {
-      if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
+      function nextStep() {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          window.location.href = "index.html";
+        }
       }
-    }
 
-    function logout() {
-      sessionStorage.clear();
-      localStorage.clear();
-      window.location.href = "login.html";
-    }
+      function prevStep() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
 
-    showStep(currentStep);
-  </script>
+      function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+
+      showStep(currentStep);
+    </script>
 </body>
 </html>

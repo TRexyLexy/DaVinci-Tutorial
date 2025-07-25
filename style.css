@@ -1,4 +1,9 @@
 
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,9 +15,7 @@ body {
   color: #000;
   max-width: 1200px;
   margin: 0 auto;
-  font-weight: 400; 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
-
+  font-weight: 20; 
 }
 
 .container {
@@ -56,11 +59,22 @@ body {
   flex-shrink: 0; 
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@1,700&display=swap');
 
 .banner-text h1 {
+font-family:  font-family: "Baskerville", "Georgia", serif;  
+font-style: italic;
+  font-weight: 700px;
+  text-align: fixed;
   margin: 0;
-  font-size: 32px;
-  color: #ba0000;
+  font-size: 48px;
+  color: white;
+  text-shadow:
+  	-2px -2px 0 #EC1C24,
+	1px -1px 0 #EC1C24,
+	-1.9px 1.9px 0 #EC1C24,
+	1.5px 1.5px 0 #EC1C24,
+	1px 1px 1px rgba(0,0,0,0.5);
 }
 
 .banner-text p {
@@ -72,13 +86,14 @@ body {
 /* Larger styles for full screen */
 @media (min-width: 1400px) {
   .banner-text h1 {
+    text-align: center;
     font-size: 50px;
     position: relative;
     left: 70%;
     right: 50%;
     margin-top: -10vw;
     margin-left: -50vw;
-    margin-right: -50vw;
+    margin-right: 80vw;
     padding: 1.5rem 2rem;
   }
 
@@ -125,7 +140,7 @@ h1, h2, h3 {
   text-align: center;
 }
 .step-nav button {
-  background-color: #ba0000;
+  background-color: #EC1C24;
   color: #fff;
   border: 2px solid #000;
   border-radius: 15px;
@@ -147,7 +162,7 @@ nav.nav-buttons {
   margin-top: 40px;
 }
 nav.nav-buttons a {
-  background-color: #ba0000;
+  background-color: #EC1C24;
   color: #fff;
   padding: 10px 15px;
   margin: 10px;
@@ -198,7 +213,7 @@ img {
   font-weight: bold;
 }
 .quiz-question button {
-  background-color: #ba0000;
+  background-color: #EC1C24;
   border: none;
   padding: 8px 15px;
   margin: 6px 8px 6px 0;
@@ -275,7 +290,7 @@ img {
 .login-box {
   max-width: 400px;
   margin: 80px auto;
-  background: #ba0000;
+  background: #EC1C24;
   padding: 30px;
   border-radius: 15px;
   border: 3px solid #000;
@@ -296,7 +311,7 @@ img {
 
 .login-box button {
   padding: 10px 20px;
-  background-color: #fd2d2d;
+  background-color: #fff;
   border: none;
   border-radius: 8px;
   color: #000;
@@ -335,7 +350,7 @@ img {
 }
 
 #logout-btn {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   padding: 10px 18px;
@@ -352,4 +367,13 @@ img {
 #logout-btn:hover {
   background: linear-gradient(135deg, #fd2d2d, #ff3c3c);
   transform: scale(1.03);
+}
+
+#welcome-message{
+font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: #000;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-weight: 400; 
 }

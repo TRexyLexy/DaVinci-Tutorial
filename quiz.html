@@ -196,14 +196,17 @@
       answers: detailedResults
     };
 
-    emailjs.send("service_cjvvmio", "template_9ia9tpl", templateParams)
-      .then(() => {
-        alert("Your quiz has been submitted.");
-        document.getElementById("quiz-form").reset();
-      }, (error) => {
-        console.error("EmailJS Error:", error);
-        alert("There was an error submitting your quiz.");
-      });
+   emailjs.send("service_cjvvmio", "template_9ia9tpl", templateParams)
+  .then(() => {
+    alert("Your quiz has been submitted.");
+    document.getElementById("quiz-form").reset();
+
+    // Redirect to index page after submission
+    window.location.href = "index.html";
+  }, (error) => {
+    console.error("EmailJS Error:", error);
+    alert("There was an error submitting your quiz.");
+  });
   }
 </script>
 

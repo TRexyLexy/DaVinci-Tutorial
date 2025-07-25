@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lesson 6: Yard Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="Favicon.png" />
+
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-banner">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+    <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
+    </a>
+    <div class="banner-text">
+      <h1>BRW WMS Training Portal</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="help.html">Help</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 6: Yard Management</h1>
+    <img src="Slide54.PNG"/>
+
+    <div class="step-counter" id="step-counter">Step 1 of 6</div>
+
+    <div id="lesson-steps">
+      <div class="step active">
+        <h2>Introduction to Yard Management</h2>
+        <p>The efficient organization and movement of trailers, trucks, and other equipment within a facility's yard. It's crucial for smooth transitions between transport and warehouse operations.</p>
+      </div>
+
+      <div class="step">
+        <h2>Integrating Yard Appointments with TMS</h2>
+	<img src="Slide55.PNG"/>
+	<img src="Slide56.PNG"/>
+        <p><strong>Purpose:</strong> Manage appointments for pickups and deliveries directly within your TMS.</p>
+        <p><strong>Shipment Tab:</strong></p>
+        <ol>
+          <li>In TMS, go to the <strong>"Shipment"</strong> tab.</li>
+          <li>Find shipping orders ready for pick-up.</li>
+          <li>Under the <strong>"Appointment"</strong> tab, create, edit, or view <strong>"Pick Up Appointments"</strong>.</li>
+        </ol>
+        <p><strong>Loads Tab:</strong></p>
+        <ol>
+          <li>In TMS, go to the <strong>"Loads"</strong> tab.</li>
+          <li>Find shipping orders ready for pick-up.</li>
+          <li>Under the <strong>"Appointment"</strong> tab, manage pick-up appointments.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Integrating Yard Appointments with WMS</h2>
+	<img src="Slide58.PNG"/>
+	<img src="Slide59.PNG"/>
+        <p><strong>Purpose:</strong> Link yard appointments with your warehouse shipping and receiving processes.</p>
+        <p><strong>Shipping Orders:</strong></p>
+        <ol>
+          <li>Go to a specific <strong>"Shipping Order"</strong>.</li>
+          <li>Use the <strong>"Assignments"</strong> tab to manage appointments.</li>
+        </ol>
+        <p><strong>Receiving Orders:</strong></p>
+        <ol>
+          <li>Go to a specific <strong>"Receiving Order"</strong>.</li>
+          <li>Use the <strong>"Assignments"</strong> tab to manage appointments.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Viewing All Yard Appointments</h2>
+	<img src="Slide65.PNG"/>
+        <p><strong>Purpose:</strong> See a centralized list of all scheduled appointments from shipping and receiving orders.</p>
+        <ol>
+          <li>Go to the <strong>"Yard Appointments"</strong> tab (e.g., Dashboard &gt; Yard Appointments).</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Yard Locations & Appointment Processing</h2>
+	<img src="Slide60.PNG"/> <img src="Slide61.PNG"/> <img src="Slide62.PNG"/>
+        <p><strong>Purpose:</strong> Manage yard locations and process arrivals.</p>
+        <ol>
+          <li>Navigate to <strong>Home &gt; Yard &gt; Yard Locations</strong>.</li>
+          <li>Unoccupied locations appear in green.</li>
+          <li>Select <strong>"In Gate"</strong> and choose <strong>"With appointment"</strong>.</li>
+          <li>Click <strong>"Refresh"</strong> to display appointments.</li>
+          <li>Select an appointment and yard location, then click <strong>"Save"</strong> (location turns red).</li>
+          <li>Use <strong>"Relocate"</strong> to move trailers/trucks and update timestamp.</li>
+          <li>Once unloading/loading is complete, select <strong>"Out Gate"</strong> to finalize (location turns green).</li>
+          <li>Validate timestamps in the <strong>"Event Management"</strong> tab at the order level.</li>
+        </ol>
+      </div>
+
+      <div class="step">
+        <h2>Yard Equipment</h2>
+	<img src="Slide63.PNG"/>
+        <p><strong>Purpose:</strong> Track trailers and containers even without appointments.</p>
+        <ul>
+          <li><strong>Last Free Day for Pick:</strong> Deadline to pick up without penalty.</li>
+          <li><strong>Last Free Day for Return:</strong> Deadline to drop off without penalty.</li>
+        </ul>
+        <ol>
+          <li>Go to <strong>Home &gt; Yard &gt; Equipment</strong>.</li>
+          <li>Add or manage yard equipment records.</li>
+	<img src="Slide64.PNG"/>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson5.html">Previous Lesson</a>
+      <a href="index.html">Home</a>
+    </nav>
+
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const backBtn = document.getElementById("back-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const stepCounter = document.getElementById("step-counter");
+
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+        backBtn.disabled = (index === 0);
+        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+      }
+
+      function nextStep() {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+
+      showStep(currentStep);
+    </script>
+</body>
+</html>
