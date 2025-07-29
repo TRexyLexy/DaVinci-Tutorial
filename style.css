@@ -24,6 +24,20 @@ body {
   padding: 0 20px;
 }
 
+.lesson-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px;
+}
+
+.lesson-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+
 /* Full-width Banner */
 .site-banner {
   width: 100vw;

@@ -6,15 +6,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
 
- 
-    <script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
 
-</head>
+ </head>
 <body>
 
   <!-- Banner -->
@@ -23,10 +22,8 @@
       <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
     <div class="banner-text">
-    <button id="logout-btn" onclick="logout()">Log Out</button>
-
+      <button id="logout-btn" onclick="logout()">Log Out</button>
       <h1>BRW WMS Training Portal</h1>
-
     </div>
     <nav class="top-nav">
       <a href="index.html">Home</a>
@@ -36,21 +33,30 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <div class="lesson-buttons">
-  <a href="lesson1.html" class="lesson-btn">Lesson 1: Getting Started</a>
-  <a href="lesson2.html" class="lesson-btn">Lesson 2: Setup</a>
-  <a href="lesson3.html" class="lesson-btn">Lesson 3: Order Management</a>
-  <a href="lesson4.html" class="lesson-btn">Lesson 4: Billing</a>
-  <a href="lesson5.html" class="lesson-btn">Lesson 5: Transportation Management</a>
-  <a href="lesson6.html" class="lesson-btn">Lesson 6: Yard Management</a>
-  <a href="lesson7.html" class="lesson-btn">Lesson 7: Kits</a>
+ <!-- Main Content -->
+<div class="lesson-container">
+  <div class="lesson-section">
+    <h2>Part 1: Navigating DaVinci</h2>
+    <div class="lesson-buttons">
+      <a href="lesson1.html" class="lesson-btn">Lesson 1: Getting Started</a>
+      <a href="lesson2.html" class="lesson-btn">Lesson 2: Setup</a>
+      <a href="lesson3.html" class="lesson-btn">Lesson 3: Order Management</a>
+      <a href="lesson4.html" class="lesson-btn">Lesson 4: Billing</a>
+      <a href="lesson5.html" class="lesson-btn">Lesson 5: Transportation Management</a>
+      <a href="lesson6.html" class="lesson-btn">Lesson 6: Yard Management</a>
+      <a href="lesson7.html" class="lesson-btn">Lesson 7: Kits</a>
 
+    </div>
+  </div>
+
+  <div class="lesson-section">
+    <h2>Part 2: Processing Orders</h2>
+    <div class="lesson-buttons">
+   </div>
+  </div>
 </div>
 
-
   <script>
-    // Show user's name from sessionStorage
     const userName = sessionStorage.getItem("userName");
     if (userName) {
       document.getElementById("user-display-name").textContent = `Logged in as: ${userName}`;
