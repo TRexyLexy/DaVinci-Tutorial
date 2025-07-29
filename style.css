@@ -302,11 +302,12 @@ img {
 }
 
 .login-box {
-  max-width: 400px;
+  max-width: 500px;
+  color: white;
   margin: 80px auto;
-  background: #EC1C24;
-  padding: 30px;
-  border-radius: 20px;
+  background: #D12600;
+  padding: 15px;
+  border-radius: 10px;
   border: 3px solid #000;
   text-align: center;
 }
@@ -319,26 +320,23 @@ img {
   padding: 10px;
   margin: 10px auto;
   border: 1px solid #000;
+  background: linear-gradient(135deg, #fff);
   border-radius: 8px;
   box-sizing: border-box;
 }
 
 .login-box button {
-  padding: 10px 20px;
-  background-color: #fff;
-  border: none;
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #a30707, #fd2d2d);
+  color: white;
   border-radius: 8px;
-  color: #000;
   font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-  border-radius: 20px;
-  text-decoration: none;
-  border: 2px solid #000;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .login-box button:hover {
-  background: linear-gradient(135deg, #5b0eb4, #1e63e0);
+  background: linear-gradient(135deg, #fd2d2d, #ff3c3c);
   transform: scale(1.03);
 }
 

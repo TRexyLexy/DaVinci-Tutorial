@@ -109,17 +109,21 @@
   (function() {
     emailjs.init("BTA8oZMFXMkqnB74u");
   })();
-
   const correctAnswers = {
     q1: "a",
     q2: "b",
-    q3: "a"
+    q3: "a",
+    q4: "c",
+    q5: "b",
   };
 
   const questionsText = {
     q1: "What does WMS stand for?",
     q2: "What is a receiving order used for?",
-    q3: "What tab allows you to assign charges?"
+    q3: "What tab allows you to assign charges?",
+    q4: "How do you navigate to different screens in DaVinci?",
+    q4: "In DaVinci WMS, what does an "account" refer to?",
+
   };
 
   const answerChoicesText = {
@@ -137,7 +141,20 @@
       a: "Billing Tab",
       b: "Notes Tab",
       c: "Details Tab"
-    }
+    },
+    q4: {
+      a: "The three lines drop down menu",
+      b: "The navigation menu beside the three lines dropdown",
+      c: "Both choices are correct",
+      d: "Neither choices are correct"
+    },
+    q5: {
+      a: "An internal department",
+      b: "A client, customer, or business entity",
+      c: "A shipping carrier",
+      d: "A specific warehouse location"
+    },
+
   };
 
   function startQuiz() {
