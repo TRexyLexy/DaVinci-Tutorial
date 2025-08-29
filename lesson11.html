@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lesson 11: RF Emulator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="Favicon.png" />
+
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-banner">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+    <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
+    </a>
+    <div class="banner-text">
+      <h1>BRW WMS Training Portal</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="help.html">Help</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 11: RF Emulator</h1>
+    <img src="Slide86.PNG"/>
+
+    <div class="step-counter" id="step-counter">Step 1 of 10</div>
+
+    <div id="lesson-steps">
+      <div class="step active">
+        <h2>Downloading the RF Emulator</h2>
+        <p>In this lesson, we will learn to download and set up a vuirtual device which mimics a real RF device. This is useful for learning and testing however, it is not required.</p>
+        <p><strong>If you prefer to a real RF device or simply do not need the emulator, you may skip this lesson.</p>
+      </div>
+
+      <div class="step">
+        <h2>DaVinci APK</h2>
+        <ul>
+	<img src="Slide87.PNG"/>
+
+          <p><strong>Download the DaVinci App Files using the link below:<br></strong></p>
+
+  <li><a href= "https://downloads.wdgcorp.com/" target="_blank"> DaVinci Downloads</a></li><br></p>
+
+<p>Click on the most recent link at the top to download the APK File</p><br>
+              </div>
+
+      <div class="step">
+        <h2>Android Studio</h2>
+	<img src="Slide88.PNG"/>
+
+ <p><strong>Next, download Android studio using the link below:</p></strong>
+
+<li><a href= "https://developer.android.com/studio" target="_blank"> Android Studio</a></li><br>
+
+<p>Click on the white download button in the center of the screen to begin the download.</p><br>
+      </div>
+
+
+      <div class="step">
+        <h2>Install Android Studio</h2>
+	<img src="Slide89.PNG"/>
+<p> To install Android Studio, simply click "next" and "finish" at the bottom of the screen. There is not need to change any setting while in the instalation screen.</p><br>
+
+<p> After completing the installation process, open the Android Studio application.<br> You should then see the projection creation screen.</p><br>
+    	</div>
+
+
+      <div class="step">
+        <h2>Emulator</h2>
+	<img src="Slide90.PNG"/>
+<p> In the project creating screen, select "No Activity" and then next and finish to create the project.</p><br>
+
+<p> Once in the project screen click on the menu in the left corner then select "Tools" and "Device Manager."
+      </div> 
+
+      <div class="step">
+        <h2>Setup</h2>
+	<img src="Slide91.PNG"/>
+	<p> In the device manager tab, click the plus button to add a new device.</p><br>
+
+	<p> Next, click "Create Virtual Device" and then choose the "Pixel 9 Pro" as your 		device.</p><br> 
+        </div>
+
+      <div class="step">
+        <h2>Dispatch Management</h2>
+	<img src="Slide92.PNG"/>
+
+	<p>There is no need to change any settings within the device configuration, simply 		select "Finsih."</p><br>
+
+	<p> Start the device by clicking the play button beside your device.</p><br>
+	<p> Allow a few moments for the device to start up.</p><br>
+        </div>
+
+      <div class="step">
+        <h2>Advanced Dispatch Tools</h2>
+	<img src="Slide93.PNG"/>
+<p>
+              </div>
+
+
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson10.html">Previous Lesson</a>
+      <a href="index.html">Home</a>
+    </nav>
+
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const backBtn = document.getElementById("back-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const stepCounter = document.getElementById("step-counter");
+
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+        backBtn.disabled = (index === 0);
+        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+      }
+
+      function nextStep() {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+
+      showStep(currentStep);
+    </script>
+</body>
+</html>

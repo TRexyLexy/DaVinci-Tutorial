@@ -5,8 +5,6 @@
   <title>Login - DaVinci Portal</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
-
-</style>
 </head>
 <body>
   <header class="site-banner">
@@ -16,16 +14,16 @@
     <div class="banner-text">
       <h1>BRW WMS Training Portal</h1>
     </div>
-    </nav>
   </header>
 
-</head>
-<body>
   <div class="login-box">
     <h2>Login</h2>
     <form onsubmit="handleLogin(event)">
       <input type="text" id="email" placeholder="Enter your email or username" required />
       <input type="password" id="password" placeholder="Enter the password" required />
+      <label style="display:block; margin: 10px 0;">
+        <input type="checkbox" id="rememberMe" /> Remember Me
+      </label>
       <button type="submit">Log In</button>
       <p id="error-message"></p>
     </form>
@@ -57,13 +55,12 @@
       "james.anderson@brwnow.com": { username: "james.anderson", name: "James Anderson" },
       "jamie.anderson@brwnow.com": { username: "jamie.anderson", name: "Jamie Anderson" },
       "jeff.campbell@brwnow.com": { username: "jeff.campbell", name: "Jeff Campbell" },
-      "jennifer.montgomery@brwnow.com": { username: "jennifer.montgomery", name: "Jennifer montgomery" },
+      "jennifer.montgomery@brwnow.com": { username: "jennifer.montgomery", name: "Jennifer Montgomery" },
       "jimmy.rogers@brwnow.com": { username: "jimmy.rogers", name: "Jimmy Rogers" },
       "juanita.wheeling@brwnow.com": { username: "juanita.wheeling", name: "Juanita Wheeling" },
       "kaiwan.york@brwnow.com": { username: "kaiwan.york", name: "Kaiwan York" },
       "kathleen.blow@brwnow.com": { username: "kathleen.blow", name: "Kathleen Blow" },
-
-     "guest": { username: "guestuser", name: "Guest User" },
+      "guest": { username: "guestuser", name: "Guest User" },
     };
 
     const universalPassword = "brwilliams2025";
@@ -71,21 +68,22 @@
     function handleLogin(event) {
       event.preventDefault();
 
-      const input = document.getElementById("email").value.trim().toLowerCase();
-      const password = document.getElementById("password").value.trim();
+      const emailInput = document.getElementById("email").value.trim().toLowerCase();
+      const passwordInput = document.getElementById("password").value.trim();
+      const rememberMe = document.getElementById("rememberMe").checked;
       const errorMessage = document.getElementById("error-message");
 
       let matched = null;
 
       for (const email in userAccounts) {
         const { username, name } = userAccounts[email];
-        if (input === email.toLowerCase() || input === username.toLowerCase()) {
+        if (emailInput === email.toLowerCase() || emailInput === username.toLowerCase()) {
           matched = { email, name };
           break;
         }
       }
 
-      if (!matched || password !== universalPassword) {
+      if (!matched || passwordInput !== universalPassword) {
         errorMessage.textContent = "Access denied. Invalid username or password.";
         errorMessage.style.display = "block";
         return;
@@ -95,11 +93,30 @@
       sessionStorage.setItem("userName", matched.name);
       sessionStorage.setItem("userEmail", matched.email);
 
-      const redirectPage = sessionStorage.getItem("redirectAfterLogin") || "index.html";
-sessionStorage.removeItem("redirectAfterLogin");
-window.location.href = redirectPage;
+      if (rememberMe) {
+        localStorage.setItem("rememberedEmail", emailInput);
+        localStorage.setItem("rememberedPassword", passwordInput);
+      } else {
+        localStorage.removeItem("rememberedEmail");
+        localStorage.removeItem("rememberedPassword");
+      }
 
+      const redirectPage = sessionStorage.getItem("redirectAfterLogin") || "index.html";
+      sessionStorage.removeItem("redirectAfterLogin");
+      window.location.href = redirectPage;
     }
+
+    // Auto-fill if saved
+    window.onload = () => {
+      const savedEmail = localStorage.getItem("rememberedEmail");
+      const savedPassword = localStorage.getItem("rememberedPassword");
+
+      if (savedEmail && savedPassword) {
+        document.getElementById("email").value = savedEmail;
+        document.getElementById("password").value = savedPassword;
+        document.getElementById("rememberMe").checked = true;
+      }
+    };
   </script>
 </body>
 </html>
