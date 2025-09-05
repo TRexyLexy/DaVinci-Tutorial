@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lesson 8: Batching</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="Favicon.png" />
+
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-banner">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+    <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
+      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
+    </a>
+    <div class="banner-text">
+      <h1>BRW WMS Training Portal</h1>
+    </div>
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="lessons.html">Lessons</a>
+      <a href="help.html">Help</a>
+      <a href="quiz.html">Quiz</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <h1>Lesson 8: Batching</h1>
+    <img src="Slide81.PNG"/>
+
+    <div class="step-counter" id="step-counter">Step 1 of 10</div>
+
+    <div id="lesson-steps">
+      <div class="step active">
+        <h2>Batch Edit</h2>
+        <p>Batching is an essential tool for effeciency used in DaVinci.t</p>
+        <p><strong>This tool can be used in several different ways, such as batch editing the status of orders, users, ect.</p>
+      </div>
+
+      <div class="step">
+        <h2>Batch Edit</h2>
+        <ul>
+	<img src="Slide82.PNG"/>
+
+ 	  <p>Highlight the orders you would like to change by clicking on one then pressing shift and clicking on the last one.</p><br>
+
+
+          <p><strong>To batch edit, simply click on the 3 dots at the top of the tool bar.<br></strong></p>
+
+              </div>
+
+    
+    <div class="step-nav">
+      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
+    </div>
+
+    <nav class="nav-buttons">
+      <a href="lesson10.html">Previous Lesson</a>
+      <a href="index.html">Home</a>
+    </nav>
+
+    <script>
+      let currentStep = 0;
+      const steps = document.querySelectorAll(".step");
+      const backBtn = document.getElementById("back-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const stepCounter = document.getElementById("step-counter");
+
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          step.classList.toggle("active", i === index);
+        });
+        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+        backBtn.disabled = (index === 0);
+        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+      }
+
+      function nextStep() {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href = "login.html";
+      }
+
+      showStep(currentStep);
+    </script>
+</body>
+</html>
