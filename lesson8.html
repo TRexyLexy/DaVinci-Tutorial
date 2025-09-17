@@ -32,23 +32,23 @@
   </header>
 
   <div class="container">
-    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <p><a href="lessons.html" class="lesson-btn">Back to lessons</a></p>
     <h1>Lesson 8: Batching</h1>
-    <img src="Slide81.PNG"/>
+    <img src="Slide80.PNG"/>
 
     <div class="step-counter" id="step-counter">Step 1 of 10</div>
 
     <div id="lesson-steps">
       <div class="step active">
         <h2>Batch Edit</h2>
-        <p>Batching is an essential tool for effeciency used in DaVinci.t</p>
+        <p>Batching is an essential tool for effeciency used in DaVinci.</p>
         <p><strong>This tool can be used in several different ways, such as batch editing the status of orders, users, ect.</p>
       </div>
 
       <div class="step">
         <h2>Batch Edit</h2>
         <ul>
-	<img src="Slide82.PNG"/>
+	<img src="Slide81.PNG"/>
 
  	  <p>Highlight the orders you would like to change by clicking on one then pressing shift and clicking on the last one.</p><br>
 
@@ -58,55 +58,55 @@
               </div>
 
     
-    <div class="step-nav">
+     <div class="step-nav">
       <button id="back-btn" onclick="prevStep()" disabled>Back</button>
       <button id="next-btn" onclick="nextStep()">Next</button>
     </div>
 
     <nav class="nav-buttons">
-      <a href="lesson10.html">Previous Lesson</a>
+      <a href="lesson7.html">Previous Lesson</a>
       <a href="index.html">Home</a>
+      <a href="lesson9.html">Next Lesson</a>
     </nav>
+  </div>
 
-    <script>
-      let currentStep = 0;
-      const steps = document.querySelectorAll(".step");
-      const backBtn = document.getElementById("back-btn");
-      const nextBtn = document.getElementById("next-btn");
-      const stepCounter = document.getElementById("step-counter");
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
 
-      function showStep(index) {
-        steps.forEach((step, i) => {
-          step.classList.toggle("active", i === index);
-        });
-        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
-        backBtn.disabled = (index === 0);
-        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `${index + 1} of ${steps.length}`;
+
+      backBtn.disabled = (index === 0);
+      if (index === steps.length - 1) {
+        nextBtn.textContent = "Done";
+      } else {
+        nextBtn.textContent = "Next";
       }
+    }
 
-      function nextStep() {
-        if (currentStep < steps.length - 1) {
-          currentStep++;
-          showStep(currentStep);
-        } else {
-          window.location.href = "index.html";
-        }
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
       }
+    }
 
-      function prevStep() {
-        if (currentStep > 0) {
-          currentStep--;
-          showStep(currentStep);
-        }
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
       }
+    }
 
-      function logout() {
-        sessionStorage.clear();
-        localStorage.clear();
-        window.location.href = "login.html";
-      }
+    showStep(currentStep);
+  </script>
 
-      showStep(currentStep);
-    </script>
 </body>
 </html>

@@ -6,22 +6,12 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
 
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
-
-  
   <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
       sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
       window.location.href = "login.html";
     }
   </script>
-
 </head>
 <body>
   <header class="site-banner">
@@ -42,12 +32,18 @@
   <button id="logout-btn" onclick="logout()">Log Out</button>
 
   <div class="lesson-container">
-    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
-    <h1>Lesson 1: Getting Started</h1>
-        <img src="Slide3.PNG" alt="Title Slide" width="700" />
+    <p><a href="lessons.html" class="lesson-btn">Back to lessons</a></p>
 
+    <!-- Title + step counter aligned together -->
+    <div class="lesson-header">
+      <h1>Lesson 1: Getting Started</h1>
+    </div>
+
+    <img src="Slide3.PNG" alt="Title Slide" width="700" />
 
     <div id="lesson-steps">
+      <div class="step-counter" id="step-counter">Step 1 of 3</div>
+
       <div class="step active">
         <h2>Logging In</h2>
         <p>To begin using DaVinci WMS:</p>
@@ -61,50 +57,36 @@
 
       <div class="step">
         <h2>Exploring the Dashboard</h2>
-        <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics, such as:</p>
-        <p>Take a moment to familiarize yourself with the layout. It’s designed to help you quickly monitor warehouse status.</p>
+        <p>After logging in, you’ll land on the <strong>DaVinci dashboard</strong>. This dashboard gives you a quick overview of key operational metrics.</p>
+        <p>Take a moment to familiarize yourself with the layout. <br>It’s designed to help you quickly monitor warehouse status.</p>
         <img src="Slide5.PNG" alt="Dashboard Overview" />
       </div>
 
       <div class="step">
         <h2>The Navigation Menu</h2>
-        <p>In the top-left corner, you’ll see the <strong>three-line menu icon</strong> (also known as the “hamburger menu”). This dropdown is essential for moving around the system. However, you can also use the navigation menu as well.</p>
-        <p>From here, you can:</p>
+        <p>In the top-left corner, you’ll see the <strong>three-line menu icon</strong> (the “hamburger menu”). You can also use the top navigation.</p>
         <ul>
           <li><strong>Create</strong> new orders</li>
           <li><strong>Edit</strong> existing records</li>
           <li><strong>View</strong> various system features</li>
         </ul>
-        <p>Get familiar with this menu — you’ll use it constantly while working in DaVinci WMS.</p>
         <img src="Slide6.PNG" alt="Navigation Detail Slide" />
       </div>
-    </div>
 
-    <div class="step-counter" id="step-counter">1 of 3</div>
+      <div class="step-nav">
+        <button id="back-btn" onclick="prevStep()" disabled>Back</button>
+        <button id="next-btn" onclick="nextStep()">Next</button>
+      </div>
 
-    <div class="step-nav">
-      <button id="back-btn" onclick="prevStep()" disabled>Back</button>
-      <button id="next-btn" onclick="nextStep()">Next</button>
-    </div>
+      <nav class="nav-buttons">
+        <a href="index.html">Home</a>
+        <a href="lesson2.html">Next Lesson</a>
+      </nav>
+    </div> <!-- /#lesson-steps -->
 
-    <nav class="nav-buttons">
-      <a href="index.html">Home</a>
-      <a href="lesson2.html">Next Lesson</a>
-    </nav>
-  </div>
+  </div> <!-- ✅ CLOSE .lesson-container -->
 
-  
-
-  <section class="resources"><br><hr />
-    <h3>Helpful Resources</h3>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=VhpfVpHAilg&t=7s" target="_blank">▶️ Getting Started (YouTube)</a></li>
-      <li><a href="https://zendesk.wdgcorp.com/hc/en-us/articles/16559802334484-Getting-Started" target="_blank">📄 Getting Started (Article)</a></li>
-    </ul>
-  </section>
-
-  <script>
-    // Step navigation logic
+   <script>
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const backBtn = document.getElementById("back-btn");
@@ -116,8 +98,13 @@
         step.classList.toggle("active", i === index);
       });
       stepCounter.textContent = `${index + 1} of ${steps.length}`;
-      backBtn.disabled = index === 0;
-      nextBtn.textContent = index === steps.length - 1 ? "Done" : "Next";
+
+      backBtn.disabled = (index === 0);
+      if (index === steps.length - 1) {
+        nextBtn.textContent = "Done";
+      } else {
+        nextBtn.textContent = "Next";
+      }
     }
 
     function nextStep() {
@@ -135,11 +122,15 @@
     }
 
     showStep(currentStep);
-
-    function logout() {
-      sessionStorage.clear();
-      window.location.href = "login.html";
-    }
   </script>
+
+
+  <section class="resources"><br><hr />
+    <h3>Helpful Resources</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=VhpfVpHAilg&t=7s" target="_blank">▶️ Getting Started (YouTube)</a></li>
+      <li><a href="https://zendesk.wdgcorp.com/hc/en-us/articles/16559802334484-Getting-Started" target="_blank">📄 Getting Started (Article)</a></li>
+    </ul>
+  </section>
 </body>
 </html>

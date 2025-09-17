@@ -32,7 +32,7 @@
   </header>
 
   <div class="container">
-    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
+    <p><a href="lessons.html" class="lesson-btn">Back to lessons</a></p>
     <h1>Lesson 6: Yard Management</h1>
     <img src="Slide54.PNG"/>
 
@@ -129,47 +129,47 @@
     <nav class="nav-buttons">
       <a href="lesson5.html">Previous Lesson</a>
       <a href="index.html">Home</a>
+      <a href="lesson7.html">Next Lesson</a>
     </nav>
+  </div>
 
-    <script>
-      let currentStep = 0;
-      const steps = document.querySelectorAll(".step");
-      const backBtn = document.getElementById("back-btn");
-      const nextBtn = document.getElementById("next-btn");
-      const stepCounter = document.getElementById("step-counter");
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+    const backBtn = document.getElementById("back-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const stepCounter = document.getElementById("step-counter");
 
-      function showStep(index) {
-        steps.forEach((step, i) => {
-          step.classList.toggle("active", i === index);
-        });
-        stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
-        backBtn.disabled = (index === 0);
-        nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+      });
+      stepCounter.textContent = `${index + 1} of ${steps.length}`;
+
+      backBtn.disabled = (index === 0);
+      if (index === steps.length - 1) {
+        nextBtn.textContent = "Done";
+      } else {
+        nextBtn.textContent = "Next";
       }
+    }
 
-      function nextStep() {
-        if (currentStep < steps.length - 1) {
-          currentStep++;
-          showStep(currentStep);
-        } else {
-          window.location.href = "index.html";
-        }
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
       }
+    }
 
-      function prevStep() {
-        if (currentStep > 0) {
-          currentStep--;
-          showStep(currentStep);
-        }
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
       }
+    }
 
-      function logout() {
-        sessionStorage.clear();
-        localStorage.clear();
-        window.location.href = "login.html";
-      }
+    showStep(currentStep);
+  </script>
 
-      showStep(currentStep);
-    </script>
 </body>
 </html>

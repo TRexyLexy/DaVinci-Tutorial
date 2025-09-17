@@ -2,18 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lesson 4: Billing</title>
+  <title>Lesson 9: Wave Pick</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
-
-
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
 
   <script>
     if (sessionStorage.getItem("authenticated") !== "true") {
@@ -21,13 +12,11 @@
       window.location.href = "login.html";
     }
   </script>
-
 </head>
 <body>
 
   <header class="site-banner">
-  <button id="logout-btn" onclick="logout()">Log Out</button>
-
+    <button id="logout-btn" onclick="logout()">Log Out</button>
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
       <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
@@ -44,62 +33,37 @@
 
   <div class="container">
     <p><a href="lessons.html" class="lesson-btn">Back to lessons</a></p>
-    <h1>Lesson 4: Billing</h1>
-    <img src="Slide20.PNG" alt="Dashboard Overview" />
+    <h1>Lesson 9: Wave Pick</h1>
+    <img src="Slide82.PNG"/>
 
-
-    <div class="step-counter" id="step-counter">Step 1 of 5</div>
+    <div class="step-counter" id="step-counter">Step 1 of 10</div>
 
     <div id="lesson-steps">
       <div class="step active">
-        <h2>Viewing Accounts for Billing</h2>
-        <p>To view accounts for billing, navigate to the dashboard and the dropdown menu.</p>
-        <p>Select <strong>Business Partners</strong>, then <strong>Accounts</strong>.</p>
-        <img src="Slide21.PNG"/>
+        <h2>Creating a Wave Ticket</h2>
+	<img src="Slide83.PNG"/>
+
+        <p>Choose this option to combine multiple shipping orders into a single pick ticket. In the right circumstances, the wave ticket feature can reduce the amount of time needed to pick orders.</p>
+        <p><strong>Users might use a wave pick ticket to combine multiple orders of the same item at or near the same location instead of issuing a separate pick ticket for each item.</p>
       </div>
 
       <div class="step">
-        <h2>Charge Codes</h2>
-        <p>Select an account and click <strong>Charge Codes</strong> on the left sidebar.</p>
-        <p>To create a new charge code, press the green insert button.</p>
-        <p>The charge code menu offers many different type options to choose from.</p>
-        <img src="Slide27.PNG"/>
-      </div>
-
-      <div class="step">
-        <h2>Assigning Charges (3-Step Process)</h2>
-        <ol>
-          <li>Open an Order.</li>
-          <li>Enter <strong>Manual Charge Codes</strong> using the input fields for values (default is zero).</li>
-          <li>Verify <strong>Automatic Charge Codes</strong>, which are system-applied and appear on the right side.</li>
-        <img src="Slide28.PNG" alt="Dashboard Overview" />
-
-        </ol>
-      </div>
-
-      <div class="step">
-        <h2>Storage Charges & Default Billing</h2>
-        <p>There are numerous type options for storage charges depending on business rules.</p>
-        <p>Default billing provides a simple way to set up billing for accessorial and storage for all units of measure.</p>
-      </div>
+        <h2>Creating a Wave Ticket</h2>
+        <ul>
+        <img src="Slide84.PNG"/>
+        </div>
 
 
-      <div class="step">
-        <h2>Monthly Billing & General Billing Settings</h2>
-        <p>Monthly billing allows specific recurring fees to be applied each month in addition to storage fees.</p>
-        <p>The <strong>Billing</strong> section also includes invoice configuration and modes for renewal storage billing.</p>
-      </div>
-    </div>
-
-    <div class="step-nav">
+    
+     <div class="step-nav">
       <button id="back-btn" onclick="prevStep()" disabled>Back</button>
       <button id="next-btn" onclick="nextStep()">Next</button>
     </div>
 
     <nav class="nav-buttons">
-      <a href="lesson3.html">Previous Lesson</a>
+      <a href="lesson8.html">Previous Lesson</a>
       <a href="index.html">Home</a>
-      <a href="lesson5.html">Next Lesson</a>
+      <a href="lesson10.html">Next Lesson</a>
     </nav>
   </div>
 

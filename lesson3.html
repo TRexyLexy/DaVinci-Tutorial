@@ -2,29 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Lesson 3: Order Management </title>
+  <title>Lesson 3: Order Management</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
-<script>
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
-    window.location.href = "login.html";
-  }
-</script>
-
 
   <script>
-    // Session authentication check
     if (sessionStorage.getItem("authenticated") !== "true") {
       sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
       window.location.href = "login.html";
     }
   </script>
-</head>
 
+  <script>
+    if (sessionStorage.getItem("authenticated") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
 <body>
-  <!-- Banner/Header -->
   <header class="site-banner">
+    <button id="logout-btn" onclick="logout()">Log Out</button>
+
     <a href="https://brwnow.com/" target="_blank" rel="noopener noreferrer">
       <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     </a>
@@ -39,73 +37,76 @@
     </nav>
   </header>
 
-  <!-- Logout Button -->
-  <button id="logout-btn" onclick="logout()">Logout</button>
-  <script>
-    function logout() {
-      sessionStorage.removeItem("authenticated");
-      window.location.href = "login.html";
-    }
-  </script>
-
-  <!-- Lesson Content -->
   <div class="container">
-    <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
-    <h1>Lesson 3: Order Management </h1>
+    <p><a href="lessons.html" class="lesson-btn">Back to lessons</a></p>
+    <h1>Lesson 3: Order Management</h1>
+    <img src="Slide12.PNG" alt="Order Management Slide" />
+
+    <div class="step-counter" id="step-counter">1 of 2</div>
 
     <div id="lesson-steps">
+      <!-- Step 1 -->
       <div class="step active">
         <h2>Receiving Inventory</h2>
-        <img src="Slide12.PNG" alt="Warehouse Setup Slide" />
-        <p>To create a receiving order, navigate to the dropdown menu (three lines) in the top left corner.<br>
-          Select <strong>"Orders"</strong> then <strong>"Receiving Orders"</strong>.</p>
-
-            <p>From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus), and then select <strong>"Create New Receipt"</strong>.</p>
-
-        <p>Fill out the necessary fields. A <strong>Transaction Number</strong> will be created after saving.</p>
-        <img src="Slide13.PNG" alt="Warehouse Setup Slide" />
+        <p>
+          To create a receiving order, navigate to the dropdown menu (three lines) in the top left corner.<br>
+          Select <strong>"Orders"</strong> then <strong>"Receiving Orders"</strong>.
+        </p>
+        <p>
+          From the menu showing all receiving orders, click the <strong>"Insert"</strong> button (green plus),
+          and then select <strong>"Create New Receipt"</strong>.
+        </p>
+        <p>
+          Fill out the necessary fields. A <strong>Transaction Number</strong> will be created after saving.
+        </p>
+        <img src="Slide13.PNG" alt="Receiving Orders Slide" />
         <p>You can create new carriers or suppliers using the insert button next to the desired field.</p>
-
-        <p>To add items, click <strong>"Line Entries"</strong> on the left sidebar under <strong>"General"</strong>, then click the insert button. A pop-up menu will appear where you can input the item code and planned quantity.</p>
-
-        <p>To print a pre-receipt or receipt, upload the necessary documents. Click <strong>"Action"</strong> in the top right corner, then <strong>"Print"</strong> to see various printing options.</p>
-
-    <div class="step-counter" id="step-counter">Step 1 of 2</div>
-
+        <p>
+          To add items, click <strong>"Line Entries"</strong> on the left sidebar under <strong>"General"</strong>,
+          then click the insert button. A pop-up menu will appear where you can input the item code and planned quantity.
+        </p>
+        <p>
+          To print a pre-receipt or receipt, upload the necessary documents. Click <strong>"Action"</strong>
+          in the top right corner, then <strong>"Print"</strong> to see various printing options.
+        </p>
       </div>
 
+      <!-- Step 2 -->
       <div class="step">
         <h2>Shipping Orders</h2>
-        <img src="Slide15.PNG" alt="Warehouse Setup Slide" />
-        <p>The initial steps for shipping orders are similar to receiving orders.<br>
-          Instead of <strong>"Receiving Orders"</strong>, choose <strong>"Shipping Orders"</strong> from the dropdown menu.</p>
-
-        <p>The "create order" menu for shipping is very similar to that for receiving.<br>
-          Adding items to a shipping order is similar to receiving orders.</p>
-
-        <p>For <strong>"System Selected Locations"</strong>, enter the item code, unit price, ordered quantity, and shipped quantity. DaVinci will automatically calculate quantity and weight.</p>
-
-        <p>Adding line items as <strong>"Manual Selected Locations"</strong> allows you to search from existing item options.</p>
-
+        <img src="Slide15.PNG" alt="Shipping Orders Slide" />
+        <p>
+          The initial steps for shipping orders are similar to receiving orders.<br>
+          Instead of <strong>"Receiving Orders"</strong>, choose <strong>"Shipping Orders"</strong> from the dropdown menu.
+        </p>
+        <p>
+          The "create order" menu for shipping is very similar to that for receiving.<br>
+          Adding items to a shipping order is similar to receiving orders.
+        </p>
+        <p>
+          For <strong>"System Selected Locations"</strong>, enter the item code, unit price, ordered quantity,
+          and shipped quantity. DaVinci will automatically calculate quantity and weight.
+        </p>
+        <p>
+          Adding line items as <strong>"Manual Selected Locations"</strong> allows you to search from existing item options.
+        </p>
         <p>After completing your shipping order, several printing options are available.</p>
       </div>
     </div>
 
     <div class="step-nav">
       <button id="back-btn" onclick="prevStep()" disabled>Back</button>
-      <button id="next-btn" onclick="nextStep()">Next </button>
+      <button id="next-btn" onclick="nextStep()">Next</button>
     </div>
 
     <nav class="nav-buttons">
       <a href="lesson2.html">Previous Lesson</a>
+      <a href="index.html">Home</a>
       <a href="lesson4.html">Next Lesson</a>
     </nav>
+  </div>
 
-   
-    </div>
-
-   <script>
-   
+  <script>
     let currentStep = 0;
     const steps = document.querySelectorAll(".step");
     const backBtn = document.getElementById("back-btn");
@@ -116,9 +117,10 @@
       steps.forEach((step, i) => {
         step.classList.toggle("active", i === index);
       });
-      stepCounter.textContent = `Step ${index + 1} of ${steps.length}`;
+      stepCounter.textContent = `${index + 1} of ${steps.length}`;
+
       backBtn.disabled = (index === 0);
-      nextBtn.textContent = (index === steps.length - 1) ? "Done " : "Next ";
+      nextBtn.textContent = (index === steps.length - 1) ? "Done" : "Next";
     }
 
     function nextStep() {
@@ -135,15 +137,24 @@
       }
     }
 
+    function logout() {
+      sessionStorage.clear();
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+
     showStep(currentStep);
   </script>
- <hr />
 
-  <section class="resources">
+  <section class="resources"><br><hr />
     <h3>Helpful Resources</h3>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=I6dpdf7T03U" target="_blank">▶️ Basics of Receiving (YouTube)</a></li>
-     
+      <li>
+        <a href="https://www.youtube.com/watch?v=I6dpdf7T03U" target="_blank" rel="noopener noreferrer">
+          ▶️ Basics of Receiving (YouTube)
+        </a>
+      </li>
     </ul>
   </section>
-
+</body>
+</html>
