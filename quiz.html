@@ -2,28 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login - DaVinci Portal</title>
+  <title>DaVinci WMS Quiz</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="Favicon.png" />
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script>
+    // Init EmailJS once the library loads
+    window.addEventListener('DOMContentLoaded', function(){
+      if (window.emailjs && emailjs.init) {
+        emailjs.init("BTA8oZMFXMkqnB74u");
+      }
+    });
+  </script>
 </head>
 <body>
+  <!-- Banner/Header -->
   <header class="site-banner">
-      <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
-    </a>
+    <!-- If you want the logo to link somewhere, wrap the <img> with <a>. Otherwise leave it as-is. -->
+    <img src="BRW.png" alt="DaVinci Logo" class="banner-logo" />
     <div class="banner-text">
       <h1>BRW WMS Training Portal</h1>
     </div>
   </header>
-
-<head>
-  <meta charset="UTF-8">
-  <title>DaVinci WMS Quiz</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="Favicon.png" />
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-</head>
-
-<body>
 
   <!-- Intro Form -->
   <div class="quiz-login" id="intro-form">
@@ -35,16 +36,16 @@
     <input type="email" id="quizEmail" placeholder="Your Email" required />
     <input type="email" id="supervisorEmail" placeholder="Supervisor's Email" required />
     <br><br>
-    <button class="lesson-btn" onclick="startQuiz()">Start Quiz</button>
+    <button class="lesson-btn" id="startQuizBtn">Start Quiz</button>
     <p id="form-error" style="color: red;"></p>
     <p><a href="index.html" class="lesson-btn">Back to homepage</a></p>
   </div>
-<div class="quiz-container" id="quiz-container" style="display: none;">
+
+  <!-- Quiz Container -->
+  <div class="quiz-container" id="quiz-container" style="display: none;">
     <h2>Quiz - Welcome, <span id="quizUserName"></span></h2>
-    <form id="quiz-form" onsubmit="submitQuiz(event)">
-
-  <!-- Quiz Form -->
-
+    <form id="quiz-form">
+      <!-- Q1 -->
       <div class="question">
         <h4>1. What does WMS stand for?</h4>
         <label><input type="radio" name="q1" value="a" required> Warehouse Management System</label><br>
@@ -52,6 +53,7 @@
         <label><input type="radio" name="q1" value="c"> Warehouse Mobility Suite</label><br>
       </div>
 
+      <!-- Q2 -->
       <div class="question">
         <h4>2. What is a receiving order used for?</h4>
         <label><input type="radio" name="q2" value="a" required> To ship items to customers</label><br>
@@ -59,6 +61,7 @@
         <label><input type="radio" name="q2" value="c"> To pay invoices</label><br>
       </div>
 
+      <!-- Q3 -->
       <div class="question">
         <h4>3. What tab allows you to assign charges?</h4>
         <label><input type="radio" name="q3" value="a" required> Billing Tab</label><br>
@@ -66,6 +69,7 @@
         <label><input type="radio" name="q3" value="c"> Details Tab</label><br>
       </div>
 
+      <!-- Q4 -->
       <div class="question">
         <h4>4. How do you navigate to different screens in DaVinci?</h4>
         <label><input type="radio" name="q4" value="a" required> The three lines drop down menu</label><br>
@@ -74,263 +78,269 @@
         <label><input type="radio" name="q4" value="d"> Neither choices are correct</label><br>
       </div>
 
- <!-- Section 1: Getting Started -->
-<div class="question">
-  <h4>5. What information is required to log in to the BRW URL?</h4>
-  <label><input type="radio" name="q5" value="a" required> Username and Email</label><br>
-  <label><input type="radio" name="q5" value="b"> Username and Password</label><br>
-  <label><input type="radio" name="q5" value="c"> Email and Password</label><br>
-  <label><input type="radio" name="q5" value="d"> First Name and Last Name</label><br>
-</div>
+      <!-- Section 1: Getting Started -->
+      <div class="question">
+        <h4>5. What information is required to log in to the BRW URL?</h4>
+        <label><input type="radio" name="q5" value="a" required> Username and Email</label><br>
+        <label><input type="radio" name="q5" value="b"> Username and Password</label><br>
+        <label><input type="radio" name="q5" value="c"> Email and Password</label><br>
+        <label><input type="radio" name="q5" value="d"> First Name and Last Name</label><br>
+      </div>
 
-<div class="question">
-  <h4>6. What menu is used for viewing, creating, and editing orders?</h4>
-  <label><input type="radio" name="q6" value="a" required> Setting</label><br>
-  <label><input type="radio" name="q6" value="b"> Warehouse</label><br>
-  <label><input type="radio" name="q6" value="c"> Orders</label><br>
-  </div>
+      <div class="question">
+        <h4>6. What menu is used for viewing, creating, and editing orders?</h4>
+        <label><input type="radio" name="q6" value="a" required> Setting</label><br>
+        <label><input type="radio" name="q6" value="b"> Warehouse</label><br>
+        <label><input type="radio" name="q6" value="c"> Orders</label><br>
+      </div>
 
-<!-- Section 2: Setup -->
-<div class="question">
-  <h4>7. What tab can be used to manage inventory?</h4>
-  <label><input type="radio" name="q7" value="a" required> Warehouse </label><br>
-  <label><input type="radio" name="q7" value="b"> Channels</label><br>
-  <label><input type="radio" name="q7" value="c"> Labor</label><br>
-  </div>
+      <!-- Section 2: Setup -->
+      <div class="question">
+        <h4>7. What tab can be used to manage inventory?</h4>
+        <label><input type="radio" name="q7" value="a" required> Warehouse </label><br>
+        <label><input type="radio" name="q7" value="b"> Channels</label><br>
+        <label><input type="radio" name="q7" value="c"> Labor</label><br>
+      </div>
 
-<div class="question">
-  <h4>8. In DaVinci WMS, what does an "account" refer to?</h4>
-  <label><input type="radio" name="q8" value="a" required> An internal department</label><br>
-  <label><input type="radio" name="q8" value="b"> A client, customer, or business entity</label><br>
-  <label><input type="radio" name="q8" value="c"> A shipping carrier</label><br>
-  <label><input type="radio" name="q8" value="d"> A specific warehouse location</label><br>
-</div>
+      <div class="question">
+        <h4>8. In DaVinci WMS, what does an "account" refer to?</h4>
+        <label><input type="radio" name="q8" value="a" required> An internal department</label><br>
+        <label><input type="radio" name="q8" value="b"> A client, customer, or business entity</label><br>
+        <label><input type="radio" name="q8" value="c"> A shipping carrier</label><br>
+        <label><input type="radio" name="q8" value="d"> A specific warehouse location</label><br>
+      </div>
 
-<div class="question">
-  <h4>9. What is a crucial warning mentioned when importing data into a live system?</h4>
-  <label><input type="radio" name="q9" value="a" required> Always back up data first</label><br>
-  <label><input type="radio" name="q9" value="b"> Never import without testing</label><br>
-  <label><input type="radio" name="q9" value="c"> Ensure all fields are mapped</label><br>
-  <label><input type="radio" name="q9" value="d"> Use only CSV files</label><br>
-</div>
+      <div class="question">
+        <h4>9. What is a crucial warning mentioned when importing data into a live system?</h4>
+        <label><input type="radio" name="q9" value="a" required> Always back up data first</label><br>
+        <label><input type="radio" name="q9" value="b"> Never import without testing</label><br>
+        <label><input type="radio" name="q9" value="c"> Ensure all fields are mapped</label><br>
+        <label><input type="radio" name="q9" value="d"> Use only CSV files</label><br>
+      </div>
 
-<!-- Section 3: Order Management -->
-<div class="question">
-  <h4>10. What are the first two steps to create a receiving order?</h4>
-  <label><input type="radio" name="q10" value="a" required> Navigate to "Business Partners," then "Accounts"</label><br>
-  <label><input type="radio" name="q10" value="b"> Select "Settings," then "Warehouse Terminal"</label><br>
-  <label><input type="radio" name="q10" value="c"> Navigate to the dropdown menu, select "Orders," then "Receiving Orders"</label><br>
-  <label><input type="radio" name="q10" value="d"> Go to the dashboard and click the green insert button</label><br>
-</div>
+      <!-- Section 3: Order Management -->
+      <div class="question">
+        <h4>10. What are the first two steps to create a receiving order?</h4>
+        <label><input type="radio" name="q10" value="a" required> Navigate to "Business Partners," then "Accounts"</label><br>
+        <label><input type="radio" name="q10" value="b"> Select "Settings," then "Warehouse Terminal"</label><br>
+        <label><input type="radio" name="q10" value="c"> Navigate to the dropdown menu, select "Orders," then "Receiving Orders"</label><br>
+        <label><input type="radio" name="q10" value="d"> Go to the dashboard and click the green insert button</label><br>
+      </div>
 
-<div class="question">
-  <h4>11. After creating a receiving order and saving, what is automatically generated?</h4>
-  <label><input type="radio" name="q11" value="a" required> A Purchase Order Number</label><br>
-  <label><input type="radio" name="q11" value="b"> Nothing</label><br>
-  <label><input type="radio" name="q11" value="c"> A Shipping Label</label><br>
-  <label><input type="radio" name="q11" value="d"> ATransaction Number</label><br>
-</div>
+      <div class="question">
+        <h4>11. After creating a receiving order and saving, what is automatically generated?</h4>
+        <label><input type="radio" name="q11" value="a" required> A Purchase Order Number</label><br>
+        <label><input type="radio" name="q11" value="b"> Nothing</label><br>
+        <label><input type="radio" name="q11" value="c"> A Shipping Label</label><br>
+        <label><input type="radio" name="q11" value="d"> A Transaction Number</label><br>
+      </div>
 
-<div class="question">
-  <h4>12. The fundamental difference between "kit inventory" and "item inventory" is that:</h4>
-  <label><input type="radio" name="q12" value="a" required> Materials used in kits are removed from item inventory as kits are assembled, making the inventories separate.</label><br>
-  <label><input type="radio" name="q12" value="b">  Kit inventory tracks finished products, while item inventory tracks raw materials.</label><br>
-  <label><input type="radio" name="q12" value="c">Item inventory is only for items received, while kit inventory is for items shipped.
-</label><br>
-  <label><input type="radio" name="q12" value="d"> They are interchangeable views of the same pool of products, just organized differently.</label><br>
-</div>
+      <div class="question">
+        <h4>12. The fundamental difference between "kit inventory" and "item inventory" is that:</h4>
+        <label><input type="radio" name="q12" value="a" required> Materials used in kits are removed from item inventory as kits are assembled, making the inventories separate.</label><br>
+        <label><input type="radio" name="q12" value="b"> Kit inventory tracks finished products, while item inventory tracks raw materials.</label><br>
+        <label><input type="radio" name="q12" value="c"> Item inventory is only for items received, while kit inventory is for items shipped.</label><br>
+        <label><input type="radio" name="q12" value="d"> They are interchangeable views of the same pool of products, just organized differently.</label><br>
+      </div>
 
-<!-- Section 4: Billing -->
-<div class="question">
-  <h4>13. What is the purpose of "Monthly Billing: Setup" in DaVinci Unified (DVU)?</h4>
-  <label><input type="radio" name="q13" value="a" required> To generate daily reports</label><br>
-  <label><input type="radio" name="q13" value="b"> To enable account-level recurring charges</label><br>
-  <label><input type="radio" name="q13" value="c"> To create new shipping orders</label><br>
-  <label><input type="radio" name="q13" value="d"> To manage inventory levels</label><br>
-</div>
+      <!-- Section 4: Billing -->
+      <div class="question">
+        <h4>13. What is the purpose of "Monthly Billing: Setup" in DaVinci Unified (DVU)?</h4>
+        <label><input type="radio" name="q13" value="a" required> To generate daily reports</label><br>
+        <label><input type="radio" name="q13" value="b"> To enable account-level recurring charges</label><br>
+        <label><input type="radio" name="q13" value="c"> To create new shipping orders</label><br>
+        <label><input type="radio" name="q13" value="d"> To manage inventory levels</label><br>
+      </div>
 
-<div class="question">
-  <h4>14. When assigning charges, what is the difference between the "Manual" and "Automatic" columns?</h4>
-  <label><input type="radio" name="q14" value="a" required> Manual charges are user-defined, Automatic charges are system-generated.</label><br>
-  <label><input type="radio" name="q14" value="b"> Manual shows codes with a value input field, Automatic shows codes DVU applies automatically.</label><br>
-  <label><input type="radio" name="q14" value="c"> Manual is for inbound charges, Automatic is for outbound charges.</label><br>
-  <label><input type="radio" name="q14" value="d"> Manual requires a GL code, Automatic does not.</label><br>
-</div>
+      <div class="question">
+        <h4>14. When assigning charges, what is the difference between the "Manual" and "Automatic" columns?</h4>
+        <label><input type="radio" name="q14" value="a" required> Manual charges are user-defined, Automatic charges are system-generated.</label><br>
+        <label><input type="radio" name="q14" value="b"> Manual shows codes with a value input field, Automatic shows codes DVU applies automatically.</label><br>
+        <label><input type="radio" name="q14" value="c"> Manual is for inbound charges, Automatic is for outbound charges.</label><br>
+        <label><input type="radio" name="q14" value="d"> Manual requires a GL code, Automatic does not.</label><br>
+      </div>
 
-<div class="question">
-  <h4>15. What is the "Billing Rate Multiplier" designed to configure?</h4>
-  <label><input type="radio" name="q15" value="a" required> The overall cost of a warehouse</label><br>
-  <label><input type="radio" name="q15" value="b"> A multiplier that applies only to inbound storage charge codes</label><br>
-  <label><input type="radio" name="q15" value="c"> The rate for shipping orders</label><br>
-  <label><input type="radio" name="q15" value="d"> The amount of a monthly subscription fee</label><br>
-</div>
+      <div class="question">
+        <h4>15. What is the "Billing Rate Multiplier" designed to configure?</h4>
+        <label><input type="radio" name="q15" value="a" required> The overall cost of a warehouse</label><br>
+        <label><input type="radio" name="q15" value="b"> A multiplier that applies only to inbound storage charge codes</label><br>
+        <label><input type="radio" name="q15" value="c"> The rate for shipping orders</label><br>
+        <label><input type="radio" name="q15" value="d"> The amount of a monthly subscription fee</label><br>
+      </div>
 
-<div class="question">
-  <h4>16. What are the two main ways to distribute invoices in DVU?</h4>
-  <label><input type="radio" name="q16" value="a" required> Printing and Faxing</label><br>
-  <label><input type="radio" name="q16" value="b"> Emailing and Exporting as a file</label><br>
-  <label><input type="radio" name="q16" value="c"> Mailing and Cloud Storage</label><br>
-  <label><input type="radio" name="q16" value="d"> Text message and Internal notification</label><br>
-</div>
+      <div class="question">
+        <h4>16. What are the two main ways to distribute invoices in DVU?</h4>
+        <label><input type="radio" name="q16" value="a" required> Printing and Faxing</label><br>
+        <label><input type="radio" name="q16" value="b"> Emailing and Exporting as a file</label><br>
+        <label><input type="radio" name="q16" value="c"> Mailing and Cloud Storage</label><br>
+        <label><input type="radio" name="q16" value="d"> Text message and Internal notification</label><br>
+      </div>
 
-<!-- Section 5: Transportation Management -->
-<div class="question">
-  <h4>17. What is the navigation path to create a new warehouse terminal?</h4>
-  <label><input type="radio" name="q17" value="a" required> Dashboard > Dropdown > Transportation > Terminals</label><br>
-  <label><input type="radio" name="q17" value="b"> Dashboard > Dropdown > Settings > Warehouse – Terminal</label><br>
-  <label><input type="radio" name="q17" value="c"> Home > Warehouse > Terminal Creation</label><br>
-  <label><input type="radio" name="q17" value="d"> Settings > Security > Warehouse Terminal</label><br>
-</div>
+      <!-- Section 5: Transportation Management -->
+      <div class="question">
+        <h4>17. What is the navigation path to create a new warehouse terminal?</h4>
+        <label><input type="radio" name="q17" value="a" required> Dashboard > Dropdown > Transportation > Terminals</label><br>
+        <label><input type="radio" name="q17" value="b"> Dashboard > Dropdown > Settings > Warehouse – Terminal</label><br>
+        <label><input type="radio" name="q17" value="c"> Home > Warehouse > Terminal Creation</label><br>
+        <label><input type="radio" name="q17" value="d"> Settings > Security > Warehouse Terminal</label><br>
+      </div>
 
-<div class="question">
-  <h4>18. Where can you enable "Track and Trace" for users in DVU?</h4>
-  <label><input type="radio" name="q18" value="a" required> Dashboard > Dropdown > Transportation > Shipments</label><br>
-  <label><input type="radio" name="q18" value="b"> Dashboard > Dropdown > Settings > Security > User Groups</label><br>
-  <label><input type="radio" name="q18" value="c"> Home > Reports > Track and Trace</label><br>
-  <label><input type="radio" name="q18" value="d"> Account Settings > General</label><br>
-</div>
+      <div class="question">
+        <h4>18. Where can you enable "Track and Trace" for users in DVU?</h4>
+        <label><input type="radio" name="q18" value="a" required> Dashboard > Dropdown > Transportation > Shipments</label><br>
+        <label><input type="radio" name="q18" value="b"> Dashboard > Dropdown > Settings > Security > User Groups</label><br>
+        <label><input type="radio" name="q18" value="c"> Home > Reports > Track and Trace</label><br>
+        <label><input type="radio" name="q18" value="d"> Account Settings > General</label><br>
+      </div>
 
-<!-- Section 6: Yard Management -->
-<div class="question">
-  <h4>19. In Yard Locations, what does a red highlight on a location indicate?</h4>
-  <label><input type="radio" name="q19" value="a" required> The location is available</label><br>
-  <label><input type="radio" name="q19" value="b"> The location is occupied</label><br>
-  <label><input type="radio" name="q19" value="c"> The location is under maintenance</label><br>
-  <label><input type="radio" name="q19" value="d"> The location is reserved</label><br>
-</div>
+      <!-- Section 6: Yard Management -->
+      <div class="question">
+        <h4>19. In Yard Locations, what does a red highlight on a location indicate?</h4>
+        <label><input type="radio" name="q19" value="a" required> The location is available</label><br>
+        <label><input type="radio" name="q19" value="b"> The location is occupied</label><br>
+        <label><input type="radio" name="q19" value="c"> The location is under maintenance</label><br>
+        <label><input type="radio" name="q19" value="d"> The location is reserved</label><br>
+      </div>
 
-<div class="question">
-  <h4>20. What information is recommended to add when creating yard appointments?</h4>
-  <label><input type="radio" name="q20" value="a" required> The driver's name</label><br>
-  <label><input type="radio" name="q20" value="b"> The carrier's name</label><br>
-  <label><input type="radio" name="q20" value="c"> Special instructions</label><br>
-  <label><input type="radio" name="q20" value="d"> The expected arrival time</label><br>
-</div>
+      <div class="question">
+        <h4>20. What information is recommended to add when creating yard appointments?</h4>
+        <label><input type="radio" name="q20" value="a" required> The driver's name</label><br>
+        <label><input type="radio" name="q20" value="b"> The carrier's name</label><br>
+        <label><input type="radio" name="q20" value="c"> Special instructions</label><br>
+        <label><input type="radio" name="q20" value="d"> The expected arrival time</label><br>
+      </div>
 
-<!-- Section 7: Kits -->
-<div class="question">
-  <h4>21. After adding items to a kit, where can you view the added items?</h4>
-  <label><input type="radio" name="q21" value="a" required> In the item inventory</label><br>
-  <label><input type="radio" name="q21" value="b"> Within the "3 Kit" section of the create kit menu</label><br>
-  <label><input type="radio" name="q21" value="c"> On the dashboard</label><br>
-  <label><input type="radio" name="q21" value="d"> Under the "Line Entries" tab</label><br>
-</div>
+      <!-- Section 7: Kits -->
+      <div class="question">
+        <h4>21. After adding items to a kit, where can you view the added items?</h4>
+        <label><input type="radio" name="q21" value="a" required> In the item inventory</label><br>
+        <label><input type="radio" name="q21" value="b"> Within the "3 Kit" section of the create kit menu</label><br>
+        <label><input type="radio" name="q21" value="c"> On the dashboard</label><br>
+        <label><input type="radio" name="q21" value="d"> Under the "Line Entries" tab</label><br>
+      </div>
 
-<!-- Section 11: RF Emulator -->
-<div class="question">
-  <h4>22. After downloading "Android Studio," what should you select on the project creation screen?</h4>
-  <label><input type="radio" name="q22" value="a" required> Basic Activity</label><br>
-  <label><input type="radio" name="q22" value="b"> Empty Activity</label><br>
-  <label><input type="radio" name="q22" value="c"> No Activity</label><br>
-  <label><input type="radio" name="q22" value="d"> Full-Screen Activity</label><br>
-</div>
+      <!-- Section 11: RF Emulator -->
+      <div class="question">
+        <h4>22. After downloading "Android Studio," what should you select on the project creation screen?</h4>
+        <label><input type="radio" name="q22" value="a" required> Basic Activity</label><br>
+        <label><input type="radio" name="q22" value="b"> Empty Activity</label><br>
+        <label><input type="radio" name="q22" value="c"> No Activity</label><br>
+        <label><input type="radio" name="q22" value="d"> Full-Screen Activity</label><br>
+      </div>
 
-<div class="question">
-  <h4>23. How do you install the DaVinci App onto the emulated phone screen?</h4>
-  <label><input type="radio" name="q23" value="a" required> Connect the phone via USB and transfer the file</label><br>
-  <label><input type="radio" name="q23" value="b"> Open the browser on the emulator and download it</label><br>
-  <label><input type="radio" name="q23" value="c"> Drag and drop the APK file directly onto the emulated phone screen</label><br>
-  <label><input type="radio" name="q23" value="d"> Install it from the Google Play Store on the emulator</label><br>
-</div>
-
+      <div class="question">
+        <h4>23. How do you install the DaVinci App onto the emulated phone screen?</h4>
+        <label><input type="radio" name="q23" value="a" required> Connect the phone via USB and transfer the file</label><br>
+        <label><input type="radio" name="q23" value="b"> Open the browser on the emulator and download it</label><br>
+        <label><input type="radio" name="q23" value="c"> Drag and drop the APK file directly onto the emulated phone screen</label><br>
+        <label><input type="radio" name="q23" value="d"> Install it from the Google Play Store on the emulator</label><br>
+      </div>
 
       <br><br>
       <button class="submit-btn" type="submit">Submit Quiz</button>
     </form>
   </div>
 
-<script>
-  (function(){
-    emailjs.init("BTA8oZMFXMkqnB74u");
-  })();
-
-const correctAnswers = {
-  q1: "a",
-  q2: "b",
-  q3: "a",
-  q4: "c",
-  q5: "b",
-  q6: "c",
-  q7: "a",
-  q8: "b",
-  q9: "b",
-  q10: "c",
-  q11: "d",
-  q12: "a",
-  q13: "b",
-  q14: "b",
-  q15: "b",
-  q16: "b",
-  q17: "b",
-  q18: "b",
-  q19: "b",
-  q20: "b",
-  q21: "b",
-  q22: "b",
-  q23: "c",
-  q24: "c"
-};
-
-  function startQuiz() {
-    const name = document.getElementById("quizName").value.trim();
-    const email = document.getElementById("quizEmail").value.trim();
-    const supervisor = document.getElementById("supervisorEmail").value.trim();
-    const error = document.getElementById("form-error");
-
-    if (!name || !email || !supervisor) {
-      error.textContent = "Please fill out all fields.";
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email) || !emailRegex.test(supervisor)) {
-      error.textContent = "Enter valid email addresses.";
-      return;
-    }
-
-    sessionStorage.setItem("quizName", name);
-    sessionStorage.setItem("quizEmail", email);
-    sessionStorage.setItem("quizSupervisor", supervisor);
-
-    document.getElementById("intro-form").style.display = "none";
-    document.getElementById("quiz-container").style.display = "block";
-    document.getElementById("quizUserName").textContent = name;
-  }
-
-  function submitQuiz(event) {
-    event.preventDefault();
-    let score = 0;
-    let total = Object.keys(correctAnswers).length;
-    let detailedResults = "";
-
-    for (let key in correctAnswers) {
-      const selected = document.querySelector(`input[name="${key}"]:checked`);
-      const response = selected ? selected.value : "(no answer)";
-      const correctAnswer = correctAnswers[key];
-      const isCorrect = response === correctAnswer;
-      if (isCorrect) score++;
-
-      detailedResults += `${key}: Answered "${response}" → ${isCorrect ? "Correct" : "Incorrect"}\n`;
-    }
-
-    const templateParams = {
-      user_name: sessionStorage.getItem("quizName"),
-      user_email: sessionStorage.getItem("quizEmail"),
-      supervisor_email: sessionStorage.getItem("quizSupervisor"),
-      score: `${score}/${total}`,
-      answers: detailedResults
+  <script>
+    const correctAnswers = {
+      q1: "a",
+      q2: "b",
+      q3: "a",
+      q4: "c",
+      q5: "b",
+      q6: "c",
+      q7: "a",
+      q8: "b",
+      q9: "b",
+      q10: "c",
+      q11: "d", 
+      q12: "a",
+      q13: "b",
+      q14: "b",
+      q15: "b",
+      q16: "b",
+      q17: "b",
+      q18: "b",
+      q19: "b",
+      q20: "b",
+      q21: "b",
+      q22: "b",
+      q23: "c"
     };
 
-    emailjs.send("service_cjvvmio", "template_9ia9tpl", templateParams)
-      .then(() => {
-        alert("Your quiz has been submitted.");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        alert("There was an error submitting your quiz.");
-      });
-  }
-</script>
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('quiz-form').addEventListener('submit', submitQuiz);
 
+    function startQuiz() {
+      const name = document.getElementById("quizName").value.trim();
+      const email = document.getElementById("quizEmail").value.trim();
+      const supervisor = document.getElementById("supervisorEmail").value.trim();
+      const error = document.getElementById("form-error");
+
+      if (!name || !email || !supervisor) {
+        error.textContent = "Please fill out all fields.";
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email) || !emailRegex.test(supervisor)) {
+        error.textContent = "Enter valid email addresses.";
+        return;
+      }
+
+      sessionStorage.setItem("quizName", name);
+      sessionStorage.setItem("quizEmail", email);
+      sessionStorage.setItem("quizSupervisor", supervisor);
+
+      document.getElementById("intro-form").style.display = "none";
+      document.getElementById("quiz-container").style.display = "block";
+      document.getElementById("quizUserName").textContent = name;
+    }
+
+    function submitQuiz(event) {
+  event.preventDefault();
+
+  let score = 0;
+  const total = Object.keys(correctAnswers).length;
+  let detailedResults = "";
+
+  for (const key in correctAnswers) {
+    const selected = document.querySelector(`input[name="${key}"]:checked`);
+    const response = selected ? selected.value : "(no answer)";
+    const isCorrect = response === correctAnswers[key];
+    if (isCorrect) score++;
+    detailedResults += `${key}: Answered "${response}" → ${isCorrect ? "Correct" : "Incorrect"}\n`;
+  }
+
+  const user_name = sessionStorage.getItem("quizName") || "Anonymous";
+  const user_email = sessionStorage.getItem("quizEmail") || "";
+  const supervisor_email = sessionStorage.getItem("quizSupervisor") || "";
+
+  const templateParams = {
+    to_email: supervisor_email,  
+    user_email,
+    score: `${score}/${total}`,
+
+    // recommended extras:
+    reply_to: user_email,      
+    subject: Quiz Results — ${user_name} (${score}/${total})`
+  };
+
+  // Use public key as 4th arg (no init timing issues)
+  emailjs.send("service_cjvvmio", "template_9ia9tpl", templateParams, "BTA8oZMFXMkqnB74u")
+    .then(() => {
+      alert("Your quiz has been submitted.");
+      // window.location.href = "index.html"; 
+
+setTimeout(() => {
+  window.location.href = "index.html";
+}, 2000);
+    })
+    .catch(err => {
+      alert(`Email send failed (status ${err?.status ?? "n/a"}). Check template vars & allowed domains.`);
+      console.error(err);
+    });
+}
+
+  </script>
 </body>
 </html>
